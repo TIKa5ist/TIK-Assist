@@ -1818,7 +1818,8 @@
       </div>
 
       <div class="contact-info">
-        
+        <div><strong>BTW-nummer:</strong> (hier komt jouw officieel BTW-nummer, bv. BE0XXXXXXXXX)</div>
+      </div>
     </div>
 
     <!-- APART MINI-FORMULIER -->
@@ -1888,5 +1889,52 @@
 
   </div>
 </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> TIK – jouw gids in België. Alle rechten voorbehouden.</div>
+    <div>Meertalige begeleiding voor wonen, administratie, afspraken en ondersteuning voor senioren.</div>
+  </div>
+</footer>
+
+<script>
+  // Jaar in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Floating language switcher
+  const toggleBtn = document.querySelector('.lang-toggle');
+  const menu = document.querySelector('.lang-menu');
+  const options = document.querySelectorAll('.lang-option');
+  const langBlocks = document.querySelectorAll('.lang-block');
+
+  toggleBtn.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.lang-floating')) {
+      menu.style.display = 'none';
+    }
+  });
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const lang = option.getAttribute('data-lang');
+
+      options.forEach(o => o.classList.remove('active'));
+      option.classList.add('active');
+
+      langBlocks.forEach(block => {
+        block.classList.toggle('active', block.dataset.langBlock === lang);
+      });
+
+      document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
+
+      menu.style.display = 'none';
+    });
+  });
+</script>
+
 </body>
 </html>
