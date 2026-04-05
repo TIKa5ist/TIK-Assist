@@ -190,33 +190,8 @@
     }
 
     /* HERO */
-  
-    .hero {  <section id="over-ons">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">Over ons</div>
-      <h2 class="section-title">TIK Assist – jouw betrouwbare hulp in België</h2>
-      <p class="section-subtitle">
-        Wij helpen je met wonen, administratie en afspraken — snel, duidelijk en zonder stress.
-      </p>
-    </div>
 
-    <div class="detail-section">
-      <div class="detail-box">
-        <p class="detail-text">
-          Met meer dan 15 jaar ervaring en ondersteuning in meerdere talen zorgen wij dat alles correct geregeld wordt, zonder fouten of verwarring.
-        </p>
-        <p class="detail-text">
-          Wij werken volledig onafhankelijk en zetten jouw belangen altijd op de eerste plaats.
-        </p>
-        <p class="detail-strong">
-          Jouw rust is geen luxe, maar een recht.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+    .hero {
       padding: 3.5rem 0 3rem;
     }
 
@@ -341,8 +316,7 @@
 
     /* SECTIONS */
 
-    section { 
-
+    section {
       padding: 3rem 0;
     }
 
@@ -370,32 +344,6 @@
       font-size: 0.95rem;
       color: var(--text-soft);
     }
-<!-- OVER ONS -->
-<section id="over-ons">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">Over ons</div>
-      <h2 class="section-title">TIK Assist – jouw betrouwbare hulp in België</h2>
-      <p class="section-subtitle">
-        Wij helpen je met wonen, administratie en afspraken — snel, duidelijk en zonder stress.
-      </p>
-    </div>
-
-    <div class="detail-section">
-      <div class="detail-box">
-        <p class="detail-text">
-          Met meer dan 15 jaar ervaring en ondersteuning in meerdere talen zorgen wij dat alles correct geregeld wordt, zonder fouten of verwarring.
-        </p>
-        <p class="detail-text">
-          Wij werken volledig onafhankelijk en zetten jouw belangen altijd op de eerste plaats.
-        </p>
-        <p class="detail-strong">
-          Jouw rust is geen luxe, maar een recht.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
     /* SERVICES GRID */
 
@@ -1838,29 +1786,93 @@
   </div>
   <!-- EINDE AR -->
 
-  <!-- CONTACT – GEMEENSCHAPPELIJK -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-inner">
-      <div>
-        <h2 class="contact-title">Start jouw gratis gesprek</h2>
-        <p class="contact-text">
-          Laat je gegevens achter en wij nemen snel contact met je op. We bekijken samen jouw situatie
-          en welke ondersteuning jij nodig hebt in België.
+ ```html
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container contact-inner">
+
+    <div>
+      <h2 class="contact-title">Neem contact op</h2>
+      <p class="contact-text">
+        Heb je vragen of wil je meteen starten? Neem gerust contact met ons op.
+      </p>
+
+      <div class="contact-info">
+        Bel ons rechtstreeks: <strong>0480 69 33 50</strong><br />
+        Of mail: <strong>info@tik.support</strong>
+      </div>
+    </div>
+
+    <div>
+
+      <!-- 🔥 NIEUWE FORUM BOX -->
+      <div class="extra-contact-box">
+        <p class="extra-text">
+          Staat jouw situatie er niet tussen?<br>
+          Geen probleem. Wij helpen je graag persoonlijk verder.
         </p>
-        <div class="contact-info">
-          <div><strong>Telefoon:</strong> <a href="tel:+32480693350">0480 69 33 50</a></div>
-          <div><strong>E-mail:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-          <div><strong>Adres:</strong> Gallifortlei 142, 2100 Antwerpen</div>
-        </div>
-        <div class="contact-info">
-        
-        </div>
+
+        <a href="#contact" class="btn-primary extra-btn">
+          <span>👉</span>
+          <span>Start je gratis gesprek</span>
+        </a>
       </div>
 
+      <!-- BESTAANDE FORM -->
+      <form>
+        <div class="form-group">
+          <label>Naam</label>
+          <input type="text" placeholder="Jouw naam" />
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="Jouw e-mail" />
+        </div>
+
+        <div class="form-group">
+          <label>Bericht</label>
+          <textarea placeholder="Hoe kunnen we je helpen?"></textarea>
+        </div>
+
+        <button class="btn-submit">
+          <span>👉</span>
+          <span>Verstuur bericht</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA CSS TOEVOEGEN -->
+<style>
+.extra-contact-box {
+  background: #111118;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.8);
+}
+
+.extra-text {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 1rem;
+}
+
+.extra-btn {
+  justify-content: center;
+}
+</style>
+```
       <!-- WEB3FORMS FORMULIER – VUL JE EIGEN ACCESS_KEY IN -->
       <form action="https://api.web3forms.com/submit" method="POST">
         <!-- VERVANG DIT DOOR JOUW ECHTE WEB3FORMS ACCESS KEY -->
-        <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
+        <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67
+">
 
         <!-- Optioneel: onderwerp -->
         <input type="hidden" name="subject" value="Nieuw bericht via TIK website">
