@@ -1797,8 +1797,9 @@
         Geen probleem. Wij helpen je graag persoonlijk verder.
       </p>
 
-      <a href="#contact" class="btn-primary contact-extra-btn">
-        👉 Start je gratis gesprek
+      <!-- APARTE KNOP VOOR APART FORMULIER -->
+      <a href="#persoonlijk-formulier" class="btn-primary contact-extra-btn">
+        👉 Start persoonlijk hulpverzoek
       </a>
     </div>
 
@@ -1817,14 +1818,45 @@
       </div>
 
       <div class="contact-info">
-        <div><strong>BTW-nummer:</strong> (hier komt jouw officieel BTW-nummer, bv. BE0XXXXXXXXX)</div>
-      </div>
+        
     </div>
 
-    <!-- WEB3FORMS FORMULIER -->
-    <form action="https://api.web3forms.com/submit" method="POST">
+    <!-- APART MINI-FORMULIER -->
+    <form id="persoonlijk-formulier" action="https://api.web3forms.com/submit" method="POST" style="margin-top:2rem;">
+      <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
+      <input type="hidden" name="subject" value="Persoonlijk hulpverzoek via TIK Assist">
+
+      <h3 class="contact-title" style="margin-bottom:1rem;">Persoonlijk hulpverzoek</h3>
+
+      <div class="form-group">
+        <label for="naam2">Naam</label>
+        <input type="text" id="naam2" name="name" placeholder="Jouw naam" required />
+      </div>
+
+      <div class="form-group">
+        <label for="telefoon2">Telefoonnummer</label>
+        <input type="tel" id="telefoon2" name="phone" placeholder="+32 ..." required />
+      </div>
+
+      <div class="form-group">
+        <label for="bericht2">Jouw vraag / situatie</label>
+        <textarea id="bericht2" name="message" placeholder="Beschrijf kort jouw situatie"></textarea>
+      </div>
+
+      <input type="hidden" name="redirect" value="https://jouwdomein.be/bedankt.html">
+
+      <button type="submit" class="btn-submit">
+        <span>👉</span>
+        <span>Verstuur persoonlijk verzoek</span>
+      </button>
+    </form>
+
+    <!-- GROOT ALGEMEEN FORMULIER -->
+    <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:3rem;">
       <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
       <input type="hidden" name="subject" value="Nieuw bericht via TIK website">
+
+      <h3 class="contact-title" style="margin-bottom:1rem;">Algemeen contactformulier</h3>
 
       <div class="form-group">
         <label for="naam">Naam / Name / Nom / الاسم</label>
@@ -1856,53 +1888,5 @@
 
   </div>
 </section>
-
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div>© <span id="year"></span> TIK – jouw gids in België. Alle rechten voorbehouden.</div>
-    <div>Meertalige begeleiding voor wonen, administratie, afspraken en ondersteuning voor senioren.</div>
-  </div>
-</footer>
-
-<script>
-  // Jaar in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Floating language switcher
-  const toggleBtn = document.querySelector('.lang-toggle');
-  const menu = document.querySelector('.lang-menu');
-  const options = document.querySelectorAll('.lang-option');
-  const langBlocks = document.querySelectorAll('.lang-block');
-
-  toggleBtn.addEventListener('click', () => {
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.lang-floating')) {
-      menu.style.display = 'none';
-    }
-  });
-
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      const lang = option.getAttribute('data-lang');
-
-      options.forEach(o => o.classList.remove('active'));
-      option.classList.add('active');
-
-      langBlocks.forEach(block => {
-        block.classList.toggle('active', block.dataset.langBlock === lang);
-      });
-
-      document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
-
-      menu.style.display = 'none';
-    });
-  });
-</script>
-
 </body>
 </html>
