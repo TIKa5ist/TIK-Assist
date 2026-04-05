@@ -1786,60 +1786,76 @@
   </div>
   <!-- EINDE AR -->
 
-  <!-- CONTACT – GEMEENSCHAPPELIJK -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-inner">
-      <div>
-        <h2 class="contact-title">Start jouw gratis gesprek</h2>
-        <p class="contact-text">
-          Laat je gegevens achter en wij nemen snel contact met je op. We bekijken samen jouw situatie
-          en welke ondersteuning jij nodig hebt in België.
-        </p>
-        <div class="contact-info">
-          <div><strong>Telefoon:</strong> <a href="tel:+32480693350">0480 69 33 50</a></div>
-          <div><strong>E-mail:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-          <div><strong>Adres:</strong> Gallifortlei 142, 2100 Antwerpen</div>
-        </div>
-        <div class="contact-info">
-          <div><strong>BTW-nummer:</strong> (hier komt jouw officieel BTW-nummer, bv. BE0XXXXXXXXX)</div>
-        </div>
+<!-- CONTACT – GEMEENSCHAPPELIJK -->
+<section id="contact" class="contact-section">
+  <div class="container contact-inner">
+
+    <!-- EXTRA CTA BOVEN HET FORMULIER -->
+    <div class="contact-extra">
+      <h3 class="contact-extra-title">Staat jouw situatie er niet tussen?</h3>
+      <p class="contact-extra-text">
+        Geen probleem. Wij helpen je graag persoonlijk verder.
+      </p>
+
+      <a href="#contact" class="btn-primary contact-extra-btn">
+        👉 Start je gratis gesprek
+      </a>
+    </div>
+
+    <!-- CONTACT INFO BLOK -->
+    <div>
+      <h2 class="contact-title">Start jouw gratis gesprek</h2>
+      <p class="contact-text">
+        Laat je gegevens achter en wij nemen snel contact met je op. We bekijken samen jouw situatie
+        en welke ondersteuning jij nodig hebt in België.
+      </p>
+
+      <div class="contact-info">
+        <div><strong>Telefoon:</strong> <a href="tel:+32480693350">0480 69 33 50</a></div>
+        <div><strong>E-mail:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
+        <div><strong>Adres:</strong> Gallifortlei 142, 2100 Antwerpen</div>
       </div>
 
-      <!-- WEB3FORMS FORMULIER – VUL JE EIGEN ACCESS_KEY IN -->
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <!-- VERVANG DIT DOOR JOUW ECHTE WEB3FORMS ACCESS KEY -->
-        <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
-
-        <!-- Optioneel: onderwerp -->
-        <input type="hidden" name="subject" value="Nieuw bericht via TIK website">
-
-        <div class="form-group">
-          <label for="naam">Naam / Name / Nom / الاسم</label>
-          <input type="text" id="naam" name="name" placeholder="Jouw naam / Your name" required />
-        </div>
-        <div class="form-group">
-          <label for="telefoon">Telefoonnummer / Phone</label>
-          <input type="tel" id="telefoon" name="phone" placeholder="+32 ..." required />
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail (optioneel)</label>
-          <input type="email" id="email" name="email" placeholder="info@tik.support" />
-        </div>
-        <div class="form-group">
-          <label for="bericht">Bericht / Message / Message / الرسالة</label>
-          <textarea id="bericht" name="message" placeholder="Vertel kort jouw situatie of vraag"></textarea>
-        </div>
-
-        <!-- Redirect naar bedankt-pagina (pas de URL aan naar jouw echte domein) -->
-        <input type="hidden" name="redirect" value="https://jouwdomein.be/bedankt.html">
-
-        <button type="submit" class="btn-submit">
-          <span>👉</span>
-          <span>Vraag gratis gesprek aan</span>
-        </button>
-      </form>
+      <div class="contact-info">
+        <div><strong>BTW-nummer:</strong> (hier komt jouw officieel BTW-nummer, bv. BE0XXXXXXXXX)</div>
+      </div>
     </div>
-  </section>
+
+    <!-- WEB3FORMS FORMULIER -->
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
+      <input type="hidden" name="subject" value="Nieuw bericht via TIK website">
+
+      <div class="form-group">
+        <label for="naam">Naam / Name / Nom / الاسم</label>
+        <input type="text" id="naam" name="name" placeholder="Jouw naam / Your name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="telefoon">Telefoonnummer / Phone</label>
+        <input type="tel" id="telefoon" name="phone" placeholder="+32 ..." required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail (optioneel)</label>
+        <input type="email" id="email" name="email" placeholder="info@tik.support" />
+      </div>
+
+      <div class="form-group">
+        <label for="bericht">Bericht / Message / Message / الرسالة</label>
+        <textarea id="bericht" name="message" placeholder="Vertel kort jouw situatie of vraag"></textarea>
+      </div>
+
+      <input type="hidden" name="redirect" value="https://jouwdomein.be/bedankt.html">
+
+      <button type="submit" class="btn-submit">
+        <span>👉</span>
+        <span>Vraag gratis gesprek aan</span>
+      </button>
+    </form>
+
+  </div>
+</section>
 
 </main>
 
