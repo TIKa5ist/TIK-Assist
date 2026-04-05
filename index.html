@@ -1951,6 +1951,76 @@
     });
   });
 </script>
+<!-- PLAK DIT HELEMAAL OP HET EINDE VAN JE BESTAND (VOOR </body>) -->
 
+<script>
+  const toggleBtn = document.querySelector('.lang-toggle');
+  const menu = document.querySelector('.lang-menu');
+  const options = document.querySelectorAll('.lang-option');
+  const blocks = document.querySelectorAll('.lang-block');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  // Toggle menu
+  toggleBtn.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Klik buiten menu = sluiten
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.lang-floating')) {
+      menu.style.display = 'none';
+    }
+  });
+
+  // Language switch
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const lang = option.dataset.lang;
+
+      // active knop
+      options.forEach(o => o.classList.remove('active'));
+      option.classList.add('active');
+
+      // juiste content tonen
+      blocks.forEach(block => {
+        block.classList.toggle(
+          'active',
+          block.dataset.langBlock === lang
+        );
+      });
+
+      // RTL fix
+      if (lang === 'ar') {
+        document.body.classList.add('rtl');
+      } else {
+        document.body.classList.remove('rtl');
+      }
+
+      menu.style.display = 'none';
+    });
+  });
+
+  // FIX NAV LINKS PER TAAL
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const base = link.getAttribute('href').replace('#', '');
+      const activeLang = document.querySelector('.lang-option.active').dataset.lang;
+
+      let targetId = base;
+
+      if (activeLang !== 'nl') {
+        targetId = base + '-' + activeLang;
+      }
+
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
