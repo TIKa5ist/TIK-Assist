@@ -34,6 +34,7 @@
       background: radial-gradient(circle at top, #181822 0, #0b0b0d 45%);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -189,6 +190,107 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ===== INTRO ANIMATIE ===== */
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #15151b 0%, #050507 100%);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .intro-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-letters {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .intro-letter {
+      opacity: 0;
+      transform: translateY(50px) scale(0.8);
+      color: var(--primary);
+      text-shadow: 0 0 60px rgba(242, 201, 76, 0.4);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .intro-letter.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .intro-meaning {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .intro-letter.visible .intro-meaning {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-line {
+      position: absolute;
+      bottom: 20%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      transition: width 1s ease 0.5s;
+    }
+
+    .intro-line.animate {
+      width: 300px;
+    }
+
+    .intro-skip {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-soft);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .intro-skip:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-main);
+    }
+
+    @media (max-width: 600px) {
+      .intro-letters { font-size: 5rem; }
+      .intro-meaning { font-size: 0.8rem; }
+    }
+
     /* HERO */
 
     .hero {
@@ -260,11 +362,13 @@
       font-size: 0.95rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       border: none;
+      transition: all 0.2s ease;
     }
 
     .btn-primary:hover {
       filter: brightness(1.05);
       transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(242, 201, 76, 0.3);
     }
 
     .hero-contact-mini {
@@ -359,6 +463,12 @@
       padding: 1.4rem;
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
       border: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(242, 201, 76, 0.2);
     }
 
     .service-icon {
@@ -541,6 +651,99 @@
       color: var(--primary);
     }
 
+    /* SPECiale STYLING VOOR "STAAT JOUW SITUATIE ER NIET TUSSEN?" BLOK */
+    .contact-extra {
+      background: linear-gradient(135deg, rgba(242, 201, 76, 0.1) 0%, rgba(39, 174, 96, 0.05) 100%);
+      border: 1px solid rgba(242, 201, 76, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-extra::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(242, 201, 76, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .contact-extra:hover::before {
+      opacity: 1;
+    }
+
+    .contact-extra-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-extra-title::before {
+      content: "✨";
+    }
+
+    .contact-extra-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .btn-special {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #e5b93a 100%);
+      color: #111111;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 10px 30px rgba(242, 201, 76, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn-special:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(242, 201, 76, 0.4);
+    }
+
+    .btn-special:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .btn-special::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-special:hover::after {
+      left: 100%;
+    }
+
     form {
       background: #111118;
       border-radius: 14px;
@@ -667,10 +870,32 @@
       .services-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      
+      .intro-letters { font-size: 4rem; }
     }
   </style>
 </head>
 <body>
+
+<!-- INTRO ANIMATIE -->
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-letters">
+    <div class="intro-letter" id="letterT">
+      T
+      <span class="intro-meaning">Tijd</span>
+    </div>
+    <div class="intro-letter" id="letterI">
+      I
+      <span class="intro-meaning">Is</span>
+    </div>
+    <div class="intro-letter" id="letterK">
+      K
+      <span class="intro-meaning">Kostbaar</span>
+    </div>
+  </div>
+  <div class="intro-line" id="introLine"></div>
+  <button class="intro-skip" onclick="skipIntro()">Overslaan →</button>
+</div>
 
 <header>
   <div class="container nav">
@@ -993,7 +1218,7 @@
           </div>
           <h1 class="hero-title">Everything arranged without stress.</h1>
           <p class="hero-subtitle">We help you with housing, administration and official appointments in Belgium.</p>
-          <p class="hero-line">From finding a home to dealing with authorities – you don’t have to do it alone.</p>
+          <p class="hero-line">From finding a home to dealing with authorities – you don't have to do it alone.</p>
           <p class="hero-strong">Your peace of mind is not a luxury, but a right.</p>
 
           <div class="hero-cta">
@@ -1082,7 +1307,7 @@
           <div class="detail-box">
             <p class="detail-text">
               Finding a home in a new country is not easy. Different rules, habits and expectations.
-              We stand by your side and make sure you don’t miss important details.
+              We stand by your side and make sure you don't miss important details.
             </p>
             <ul class="detail-list">
               <li><span>✔</span><div>Contact with agents and landlords</div></li>
@@ -1132,7 +1357,7 @@
 
           <div class="detail-box">
             <p class="detail-text">
-              You don’t have to figure everything out alone. We explain step by step what is needed,
+              You don't have to figure everything out alone. We explain step by step what is needed,
               what is important and what to avoid.
             </p>
             <p class="detail-strong">
@@ -1257,12 +1482,12 @@
         <div>
           <div class="hero-badge">
             <span>✔</span>
-            <span>Plus de 15 ans d’expérience – assistance en plusieurs langues</span>
+            <span>Plus de 15 ans d'expérience – assistance en plusieurs langues</span>
           </div>
           <h1 class="hero-title">Tout est réglé sans stress.</h1>
-          <p class="hero-subtitle">Nous vous aidons pour le logement, l’administration et les rendez‑vous officiels en Belgique.</p>
-          <p class="hero-line">De la recherche de logement aux démarches administratives – vous n’êtes pas seul.</p>
-          <p class="hero-strong">Votre tranquillité n’est pas un luxe, mais un droit.</p>
+          <p class="hero-subtitle">Nous vous aidons pour le logement, l'administration et les rendez‑vous officiels en Belgique.</p>
+          <p class="hero-line">De la recherche de logement aux démarches administratives – vous n'êtes pas seul.</p>
+          <p class="hero-strong">Votre tranquillité n'est pas un luxe, mais un droit.</p>
 
           <div class="hero-cta">
             <a href="#contact" class="btn-primary">
@@ -1279,7 +1504,7 @@
         <aside class="hero-card">
           <div class="hero-card-title">TIK – votre guide en Belgique</div>
           <ul class="hero-card-list">
-            <li><span>•</span><div>Accompagnement personnalisé pour le logement, l’administration et les rendez‑vous.</div></li>
+            <li><span>•</span><div>Accompagnement personnalisé pour le logement, l'administration et les rendez‑vous.</div></li>
             <li><span>•</span><div>Nous parlons votre langue et expliquons chaque étape clairement.</div></li>
             <li><span>•</span><div>Nous protégeons vos intérêts dans les contrats et démarches officielles.</div></li>
           </ul>
@@ -1342,15 +1567,15 @@
           <div class="section-kicker">Logement</div>
           <h2 class="section-title">Chercher un logement sans erreurs</h2>
           <p class="section-subtitle">
-            Nous comprenons votre situation et vous faisons gagner du temps, de l’énergie et du stress.
+            Nous comprenons votre situation et vous faisons gagner du temps, de l'énergie et du stress.
           </p>
         </div>
 
         <div class="detail-section">
           <div class="detail-box">
             <p class="detail-text">
-              Chercher un logement dans un nouveau pays n’est pas simple. Nouvelles règles, nouvelles habitudes,
-              nouvelles attentes. Nous sommes à vos côtés pour que rien d’important ne vous échappe.
+              Chercher un logement dans un nouveau pays n'est pas simple. Nouvelles règles, nouvelles habitudes,
+              nouvelles attentes. Nous sommes à vos côtés pour que rien d'important ne vous échappe.
             </p>
             <ul class="detail-list">
               <li><span>✔</span><div>Contact avec agents et propriétaires</div></li>
@@ -1389,7 +1614,7 @@
         <div class="detail-section">
           <div class="detail-box">
             <ul class="detail-list">
-              <li><span>✔</span><div>Contrats d’énergie, gaz et internet</div></li>
+              <li><span>✔</span><div>Contrats d'énergie, gaz et internet</div></li>
               <li><span>✔</span><div>Assurances et conseils</div></li>
               <li><span>✔</span><div>Inscription à la commune</div></li>
               <li><span>✔</span><div>Explication des lettres et documents</div></li>
@@ -1400,8 +1625,8 @@
 
           <div class="detail-box">
             <p class="detail-text">
-              Vous n’avez pas besoin de tout comprendre seul. Nous vous expliquons chaque étape,
-              ce qui est important et ce qu’il vaut mieux éviter.
+              Vous n'avez pas besoin de tout comprendre seul. Nous vous expliquons chaque étape,
+              ce qui est important et ce qu'il vaut mieux éviter.
             </p>
             <p class="detail-strong">
               Un seul interlocuteur pour toutes vos questions pratiques – dans une langue claire.
@@ -1430,7 +1655,7 @@
               <li><span>✔</span><div>Administrations publiques</div></li>
             </ul>
             <p class="detail-strong">
-              Vous n’êtes pas seul. Nous vous accompagnons à chaque étape.
+              Vous n'êtes pas seul. Nous vous accompagnons à chaque étape.
             </p>
           </div>
 
@@ -1469,14 +1694,14 @@
             <ul class="detail-list">
               <li><span>✔</span><div>Accompagnement aux rendez‑vous (médecin, commune, services)</div></li>
               <li><span>✔</span><div>Explication des lettres et documents en langage simple</div></li>
-              <li><span>✔</span><div>Aide pour l’administration et les formulaires</div></li>
+              <li><span>✔</span><div>Aide pour l'administration et les formulaires</div></li>
               <li><span>✔</span><div>Soutien dans les contacts avec entreprises et services</div></li>
-              <li><span>✔</span><div>Aide pratique pour l’organisation du quotidien</div></li>
+              <li><span>✔</span><div>Aide pratique pour l'organisation du quotidien</div></li>
             </ul>
 
             <p class="detail-strong">
               Pour beaucoup de seniors, tout devient plus compliqué.
-              Nous prenons le temps d’expliquer calmement et de tout organiser avec vous.
+              Nous prenons le temps d'expliquer calmement et de tout organiser avec vous.
               Pas de stress, pas de confusion – seulement un soutien fiable.
             </p>
           </div>
@@ -1492,19 +1717,19 @@
             </div>
 
             <ul class="detail-list">
-              <li><span>✔</span><div>Aide pour les lettres et l’administration</div></li>
+              <li><span>✔</span><div>Aide pour les lettres et l'administration</div></li>
               <li><span>✔</span><div>Soutien pour les questions et la communication</div></li>
               <li><span>✔</span><div>Réponse rapide en cas de problème</div></li>
               <li><span>✔</span><div>Contact personnel si nécessaire</div></li>
             </ul>
 
             <p class="detail-strong">
-              Vous évitez ainsi les erreurs, gagnez du temps et avez toujours quelqu’un pour vous aider.
+              Vous évitez ainsi les erreurs, gagnez du temps et avez toujours quelqu'un pour vous aider.
             </p>
 
             <a href="#contact" class="btn-primary senior-btn">
               <span>👉</span>
-              <span>Commencez l’accompagnement dès aujourd’hui</span>
+              <span>Commencez l'accompagnement dès aujourd'hui</span>
             </a>
 
             <p class="senior-note">
@@ -1796,12 +2021,16 @@
         en welke ondersteuning jij nodig hebt in België.
       </p>
 
-      <!-- EXTRA TEKST BLOK -->
+      <!-- EXTRA TEKST BLOK - MET SPECIALE KNOP -->
       <div class="contact-extra">
         <h3 class="contact-extra-title">Staat jouw situatie er niet tussen?</h3>
         <p class="contact-extra-text">
           Geen probleem. Wij helpen je graag persoonlijk verder.
         </p>
+        <a href="tel:+32480693350" class="btn-special">
+          <span>📞</span>
+          <span>Start je gratis gesprek</span>
+        </a>
       </div>
 
       <div class="contact-info">
@@ -1888,6 +2117,62 @@
 
       menu.style.display = 'none';
     });
+  });
+
+  // INTRO ANIMATIE LOGICA
+  function playIntroAnimation() {
+    const overlay = document.getElementById('introOverlay');
+    const letterT = document.getElementById('letterT');
+    const letterI = document.getElementById('letterI');
+    const letterK = document.getElementById('letterK');
+    const line = document.getElementById('introLine');
+    
+    // Sequentie: T → I → K → lijn → fade out
+    setTimeout(() => {
+      letterT.classList.add('visible');
+    }, 300);
+    
+    setTimeout(() => {
+      letterI.classList.add('visible');
+    }, 900);
+    
+    setTimeout(() => {
+      letterK.classList.add('visible');
+    }, 1500);
+    
+    setTimeout(() => {
+      line.classList.add('animate');
+    }, 2100);
+    
+    setTimeout(() => {
+      overlay.classList.add('hidden');
+      // Reset na animatie zodat bij volgend bezoek opnieuw speelt (optioneel)
+      setTimeout(() => {
+        letterT.classList.remove('visible');
+        letterI.classList.remove('visible');
+        letterK.classList.remove('visible');
+        line.classList.remove('animate');
+      }, 1000);
+    }, 3500);
+  }
+
+  function skipIntro() {
+    const overlay = document.getElementById('introOverlay');
+    overlay.classList.add('hidden');
+  }
+
+  // Start animatie bij pagina load
+  window.addEventListener('load', () => {
+    // Check of gebruiker hem al gezien heeft (optioneel - haal uit commentaar als je het maar 1x wil tonen)
+    // if (!sessionStorage.getItem('introSeen')) {
+    //   playIntroAnimation();
+    //   sessionStorage.setItem('introSeen', 'true');
+    // } else {
+    //   skipIntro();
+    // }
+    
+    // Altijd afspelen (zoals gevraagd):
+    playIntroAnimation();
   });
 </script>
 
