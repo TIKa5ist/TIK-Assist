@@ -11,7 +11,7 @@
   <meta name="robots" content="index, follow" />
 
   <style>
-    :root {
+     :root {
       --bg: #0b0b0d;
       --bg-elevated: #15151b;
       --border: #2a2a33;
@@ -22,31 +22,7 @@
       --text-soft: #9a9aa3;
       --white: #ffffff;
     }
-.logo-wrap {
-  display: flex;
-  align-items: center;
-}
 
-.logo-ultra-black {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.6rem;
-  perspective: 1000px;
-}
-
-.ultra-blocks-black {
-  display: flex;
-  gap: 0.5rem;
-  align-items: flex-end;
-  transform-style: preserve-3d;
-}
-
-.ultra-block-black {
-  position: relative;
-  width: 3.5rem;
-  height: 4.5rem;
-  transform-style:
     * {
       box-sizing: border-box;
       margin: 0;
@@ -72,7 +48,50 @@
       margin: 0 auto;
       padding: 0 1.5rem;
     }
+     .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* of right: 30px voor rechts */
+    z-index: 9999;
+  }
 
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+  }
+
+  .whatsapp-icon {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    .whatsapp-float {
+      bottom: 20px;
+      left: 20px;
+    }
+    .whatsapp-btn span:last-child {
+      display: none; /* alleen icoon op mobiel */
+    }
+    .whatsapp-btn {
+      padding: 1rem;
+      border-radius: 50%;
+    }
+  }
+    </style>
     /* HEADER */
     header {
       position: sticky;
@@ -91,7 +110,8 @@
       gap: 1rem;
     }
 
-    <div class="logo-wrap">
+<!-- TIK LOGO ULTRA - BLACK EDITION -->
+<div class="logo-wrap">
   <div class="logo-ultra-black">
     <div class="ultra-blocks-black">
       <div class="ultra-block-black ultra-t-black">
@@ -129,11 +149,259 @@
     </div>
     
     <div class="ultra-slogan-black">
-      <span id="typeTextBlack"></span>
+      <span id="typeTextBlack">jouw gids in België</span>
       <span class="ultra-cursor-black">|</span>
     </div>
   </div>
 </div>
+
+<style>
+  .logo-ultra-black {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    perspective: 1000px;
+  }
+
+  .ultra-blocks-black {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    transform-style: preserve-3d;
+  }
+
+  /* 3D Block structuur */
+  .ultra-block-black {
+    position: relative;
+    width: 3.5rem;
+    height: 4.5rem;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .ultra-block-black:hover {
+    transform: translateY(-10px) rotateX(-5deg);
+  }
+
+  /* Voorkant - Goud voor T en K */
+  .ultra-front-black {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f2c94c 0%, #d4a73a 50%, #f2c94c 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      0 10px 30px rgba(242, 201, 76, 0.3),
+      inset 0 2px 0 rgba(255,255,255,0.3),
+      inset 0 -2px 0 rgba(0,0,0,0.1);
+    z-index: 3;
+    border: 2px solid #f5d76e;
+  }
+
+  /* Zijkant voor 3D effect */
+  .ultra-side-black {
+    position: absolute;
+    width: 0.8rem;
+    height: 100%;
+    background: linear-gradient(180deg, #c9a035 0%, #a8832a 100%);
+    right: -0.8rem;
+    top: 0;
+    transform: rotateY(90deg);
+    transform-origin: left;
+    border-radius: 0 12px 12px 0;
+  }
+
+  /* Bovenkant voor 3D effect */
+  .ultra-top-black {
+    position: absolute;
+    width: 100%;
+    height: 0.8rem;
+    background: linear-gradient(90deg, #e6bc4a 0%, #f5d76e 100%);
+    top: -0.8rem;
+    left: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Letters - dik zwart op goud */
+  .ultra-letter-black {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #0b0b0d;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    line-height: 1;
+  }
+
+  /* Betekenis - klein onder */
+  .ultra-meaning-black {
+    font-size: 0.5rem;
+    font-weight: 800;
+    color: #0b0b0d;
+    letter-spacing: 0.2em;
+    margin-top: 0.2rem;
+    opacity: 0.8;
+  }
+
+  /* Speciale I - ZWART, groter, actief */
+  .ultra-i-black {
+    width: 4rem;
+    height: 5.2rem;
+    transform: translateY(-15px);
+  }
+
+  /* I voorkant - ZWART met gouden accenten */
+  .ultra-front-i {
+    background: linear-gradient(135deg, #1a1a24 0%, #0b0b0d 50%, #15151b 100%);
+    border: 3px solid var(--primary);
+    box-shadow: 
+      0 15px 40px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(242, 201, 76, 0.2),
+      inset 0 2px 0 rgba(255,255,255,0.1),
+      inset 0 -2px 0 rgba(0,0,0,0.3);
+  }
+
+  .ultra-side-i {
+    background: linear-gradient(180deg, #2a2a33 0%, #1a1a24 100%);
+  }
+
+  .ultra-top-i {
+    background: linear-gradient(90deg, #3a3a4a 0%, #2a2a33 100%);
+  }
+
+  /* I letter - GOUD op zwart */
+  .ultra-letter-i {
+    color: var(--primary);
+    font-size: 2.6rem;
+    text-shadow: 
+      0 0 10px rgba(242, 201, 76, 0.5),
+      0 0 20px rgba(242, 201, 76, 0.3);
+  }
+
+  .ultra-meaning-i {
+    color: var(--primary);
+    opacity: 1;
+  }
+
+  /* De gouden dot op I */
+  .ultra-dot-black {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+    animation: ultraPulseBlack 1.5s infinite;
+  }
+
+  @keyframes ultraPulseBlack {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px var(--primary); }
+    50% { transform: scale(1.5); box-shadow: 0 0 40px var(--primary), 0 0 60px var(--primary); }
+  }
+
+  /* Roterende ring om I - GOUD */
+  .ultra-ring-black {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border: 2px solid rgba(242, 201, 76, 0.4);
+    border-radius: 20px;
+    top: -10%;
+    left: -10%;
+    animation: ultraRotateBlack 4s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes ultraRotateBlack {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Progress lijn */
+  .ultra-line-black {
+    width: 100%;
+    height: 4px;
+    background: rgba(242, 201, 76, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ultra-progress-black {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #fff, var(--primary));
+    animation: ultraProgressBlack 3s ease-in-out infinite;
+  }
+
+  @keyframes ultraProgressBlack {
+    0% { width: 0%; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0%; left: 100%; }
+  }
+
+  /* Slogan */
+  .ultra-slogan-black {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .ultra-cursor-black {
+    color: var(--primary);
+    animation: ultraBlinkBlack 1s infinite;
+    font-weight: 300;
+  }
+
+  @keyframes ultraBlinkBlack {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Hover effect */
+  .ultra-blocks-black:hover .ultra-t-black {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+  .ultra-blocks-black:hover .ultra-k-black {
+    transform: translateY(-5px) rotate(3deg);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .ultra-block-black { width: 2.8rem; height: 3.8rem; }
+    .ultra-i-black { width: 3.2rem; height: 4.5rem; }
+    .ultra-letter-black { font-size: 1.8rem; }
+    .ultra-letter-i { font-size: 2.2rem; }
+    .ultra-meaning-black { font-size: 0.45rem; }
+  }
+</style>
+
+<script>
+  // Type effect
+  const textBlack = "jouw gids in België";
+  let indexBlack = 0;
+  const typeElementBlack = document.getElementById('typeTextBlack');
+  
+  function typeEffectBlack() {
+    if (indexBlack < textBlack.length) {
+      typeElementBlack.textContent = textBlack.substring(0, indexBlack + 1);
+      indexBlack++;
+      setTimeout(typeEffectBlack, 100);
+    }
+  }
+  
+  setTimeout(typeEffectBlack, 1000);
+</script>
 
     /* MODERN FLOATING LANGUAGE SWITCHER */
     .lang-floating {
