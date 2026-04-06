@@ -67,26 +67,398 @@
       gap: 1rem;
     }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    <div class="logo-wrap">
+  <div class="logo-final">
+    <div class="final-blocks">
+      <!-- T - Zwart met goud -->
+      <div class="final-block final-t">
+        <div class="final-front final-front-dark">
+          <span class="final-letter final-letter-dark">T</span>
+          <span class="final-meaning final-meaning-dark">TIJD</span>
+        </div>
+        <div class="final-side final-side-dark"></div>
+        <div class="final-top final-top-dark"></div>
+      </div>
+      
+      <!-- I - VOLLEDIG GOUD -->
+      <div class="final-block final-i final-active">
+        <div class="final-front final-front-gold">
+          <span class="final-letter final-letter-gold">I</span>
+          <span class="final-dot"></span>
+          <span class="final-meaning final-meaning-gold">IS</span>
+        </div>
+        <div class="final-side final-side-gold"></div>
+        <div class="final-top final-top-gold"></div>
+        <!-- Dubbele ring animatie -->
+        <div class="final-ring final-ring-outer"></div>
+        <div class="final-ring final-ring-inner"></div>
+      </div>
+      
+      <!-- K - Zwart met goud -->
+      <div class="final-block final-k">
+        <div class="final-front final-front-dark">
+          <span class="final-letter final-letter-dark">K</span>
+          <span class="final-meaning final-meaning-dark">KOSTBAAR</span>
+        </div>
+        <div class="final-side final-side-dark"></div>
+        <div class="final-top final-top-dark"></div>
+      </div>
+    </div>
+    
+    <!-- Lijn animatie - verbindt de 3 blocks -->
+    <div class="final-line-container">
+      <div class="final-line-track">
+        <div class="final-line-glow"></div>
+        <div class="final-line-pulse"></div>
+      </div>
+    </div>
+    
+    <!-- Slogan -->
+    <div class="final-slogan">
+      <span id="finalType">jouw gids in België</span>
+      <span class="final-cursor">|</span>
+    </div>
+  </div>
+</div>
 
-    .logo-text-main {
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 0.12em;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-    }
+<style>
+  .logo-final {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    perspective: 1000px;
+  }
 
-    .logo-sub {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-soft);
-    }
+  .final-blocks {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-end;
+    transform-style: preserve-3d;
+    position: relative;
+  }
 
+  /* Block basis */
+  .final-block {
+    position: relative;
+    width: 3.5rem;
+    height: 4.5rem;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .final-block:hover {
+    transform: translateY(-12px) rotateX(-5deg);
+  }
+
+  /* DARK blocks (T en K) - Zwart met goud accent */
+  .final-front-dark {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #15151b 0%, #0b0b0d 50%, #1a1a24 100%);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(242, 201, 76, 0.3);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    z-index: 3;
+  }
+
+  .final-side-dark {
+    position: absolute;
+    width: 0.8rem;
+    height: 100%;
+    background: linear-gradient(180deg, #2a2a33 0%, #1a1a24 100%);
+    right: -0.8rem;
+    top: 0;
+    transform: rotateY(90deg);
+    transform-origin: left;
+    border-radius: 0 14px 14px 0;
+  }
+
+  .final-top-dark {
+    position: absolute;
+    width: 100%;
+    height: 0.8rem;
+    background: linear-gradient(90deg, #2a2a33 0%, #3a3a4a 100%);
+    top: -0.8rem;
+    left: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+    border-radius: 14px 14px 0 0;
+  }
+
+  /* Dark letters - GOUD */
+  .final-letter-dark {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--primary);
+    text-shadow: 
+      0 0 10px rgba(242, 201, 76, 0.4),
+      0 0 20px rgba(242, 201, 76, 0.2);
+    line-height: 1;
+  }
+
+  .final-meaning-dark {
+    font-size: 0.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 0.15em;
+    margin-top: 0.2rem;
+    opacity: 0.9;
+  }
+
+  /* GOLDEN I - De ster! */
+  .final-i {
+    width: 4.2rem;
+    height: 5.5rem;
+    transform: translateY(-20px);
+    z-index: 10;
+  }
+
+  .final-front-gold {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f2c94c 0%, #e5b93a 30%, #f5d76e 50%, #d4a73a 70%, #f2c94c 100%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff5d6;
+    box-shadow: 
+      0 20px 50px rgba(242, 201, 76, 0.4),
+      0 0 60px rgba(242, 201, 76, 0.2),
+      inset 0 3px 0 rgba(255,255,255,0.4),
+      inset 0 -3px 0 rgba(0,0,0,0.1);
+    z-index: 3;
+    animation: goldShine 3s infinite;
+  }
+
+  @keyframes goldShine {
+    0%, 100% { 
+      background: linear-gradient(135deg, #f2c94c 0%, #e5b93a 30%, #f5d76e 50%, #d4a73a 70%, #f2c94c 100%);
+    }
+    50% { 
+      background: linear-gradient(135deg, #f5d76e 0%, #f2c94c 30%, #fff5d6 50%, #f2c94c 70%, #e5b93a 100%);
+    }
+  }
+
+  .final-side-gold {
+    position: absolute;
+    width: 0.9rem;
+    height: 100%;
+    background: linear-gradient(180deg, #d4a73a 0%, #b8932f 100%);
+    right: -0.9rem;
+    top: 0;
+    transform: rotateY(90deg);
+    transform-origin: left;
+    border-radius: 0 16px 16px 0;
+  }
+
+  .final-top-gold {
+    position: absolute;
+    width: 100%;
+    height: 0.9rem;
+    background: linear-gradient(90deg, #f5d76e 0%, #fff5d6 50%, #f5d76e 100%);
+    top: -0.9rem;
+    left: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* Golden I letter - ZWART voor contrast */
+  .final-letter-gold {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #0b0b0d;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.3);
+    line-height: 1;
+  }
+
+  .final-meaning-gold {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: #0b0b0d;
+    letter-spacing: 0.2em;
+    margin-top: 0.3rem;
+  }
+
+  /* Zwarte dot op gouden I */
+  .final-dot {
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: #0b0b0d;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    animation: dotPulse 1.5s infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+  }
+
+  /* Dubbele ringen om I */
+  .final-ring {
+    position: absolute;
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  .final-ring-outer {
+    width: 130%;
+    height: 130%;
+    border: 3px solid rgba(242, 201, 76, 0.3);
+    top: -15%;
+    left: -15%;
+    animation: ringRotate 3s linear infinite;
+  }
+
+  .final-ring-inner {
+    width: 115%;
+    height: 115%;
+    border: 2px solid rgba(242, 201, 76, 0.5);
+    top: -7.5%;
+    left: -7.5%;
+    animation: ringRotateReverse 2s linear infinite;
+  }
+
+  @keyframes ringRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes ringRotateReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  /* LIJN ANIMATIE - Verbindt T-I-K */
+  .final-line-container {
+    width: 100%;
+    padding: 0 0.5rem;
+    margin-top: -0.5rem;
+  }
+
+  .final-line-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(242, 201, 76, 0.15);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gloeiende lijn die heen en weer gaat */
+  .final-line-glow {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--primary) 20%, 
+      #fff 50%, 
+      var(--primary) 80%, 
+      transparent 100%
+    );
+    border-radius: 2px;
+    animation: lineMove 2s ease-in-out infinite;
+    filter: blur(2px);
+  }
+
+  @keyframes lineMove {
+    0% { left: -40%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* Pulse die achter de gloed loopt */
+  .final-line-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(242, 201, 76, 0.4) 50%, 
+      transparent 100%
+    );
+    animation: pulseLine 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseLine {
+    0%, 100% { opacity: 0.2; transform: scaleX(0.3); }
+    50% { opacity: 0.8; transform: scaleX(1); }
+  }
+
+  /* Slogan */
+  .final-slogan {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-weight: 500;
+  }
+
+  .final-cursor {
+    color: var(--primary);
+    animation: cursorBlink 1s infinite;
+    font-weight: 300;
+  }
+
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Hover effects */
+  .final-blocks:hover .final-t {
+    transform: translateY(-8px) rotate(-5deg);
+  }
+  .final-blocks:hover .final-k {
+    transform: translateY(-8px) rotate(5deg);
+  }
+  .final-blocks:hover .final-i {
+    transform: translateY(-25px);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .final-block { width: 2.8rem; height: 3.8rem; }
+    .final-i { width: 3.4rem; height: 4.8rem; }
+    .final-letter-dark { font-size: 1.6rem; }
+    .final-letter-gold { font-size: 2.2rem; }
+    .final-meaning-dark, .final-meaning-gold { font-size: 0.4rem; }
+  }
+
+<script>
+  // Type effect
+  const finalText = "jouw gids in België";
+  let finalIndex = 0;
+  const finalTypeEl = document.getElementById('finalType');
+  
+  function finalType() {
+    if (finalIndex < finalText.length) {
+      finalTypeEl.textContent = finalText.substring(0, finalIndex + 1);
+      finalIndex++;
+      setTimeout(finalType, 80);
+    }
+  }
+  
+  setTimeout(finalType, 800);
     .nav-links {
       display: flex;
       gap: 1.5rem;
