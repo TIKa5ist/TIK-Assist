@@ -946,89 +946,11 @@
         height: 400px;
       }
       .location-content h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .location-content p {
         font-size: 1rem;
         padding: 0 1rem;
-      }
-    }
-
-    /* ===== EXTRA FOTO SECTIE ===== */
-    .extra-photo-section {
-      padding: 4rem 0;
-      background: var(--bg);
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .photo-box {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(242, 201, 76, 0.2);
-      border: 2px solid rgba(242, 201, 76, 0.3);
-    }
-
-    .photo-box img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .photo-box:hover img {
-      transform: scale(1.05);
-    }
-
-    .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(11, 11, 13, 0.95), transparent);
-      padding: 2rem 1.5rem 1.5rem;
-    }
-
-    .photo-overlay h3 {
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .photo-overlay p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .photo-text-content h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-    .photo-text-content h2 span {
-      color: var(--primary);
-    }
-
-    .photo-text-content p {
-      color: var(--text-soft);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-
-    @media (max-width: 768px) {
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
-      .photo-box img {
-        height: 300px;
       }
     }
 
@@ -1205,6 +1127,860 @@
       color: var(--accent);
       font-weight: bold;
     }
+
+    /* NIEUW IN BELGIË SECTION */
+    .newcomers-section {
+      background: linear-gradient(145deg, #0f0f14 0%, #15151b 100%);
+      border-top: 1px solid rgba(242, 201, 76, 0.1);
+      border-bottom: 1px solid rgba(242, 201, 76, 0.1);
+    }
+
+    .newcomers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .newcomer-card {
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newcomer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .newcomer-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .newcomer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(242, 201, 76, 0.3);
+    }
+
+    .newcomer-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .newcomer-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .newcomer-card ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .newcomer-card li {
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .newcomer-card li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .newcomers-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .btn-large {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* SENIOREN SECTION */
+    .senior-section {
+      background: #101015;
+    }
+
+    .senior-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .senior-block {
+      background: #15151b;
+      border-radius: 14px;
+      padding: 1.6rem;
+      border: 1px solid #2a2a33;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .senior-heading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .senior-text {
+      font-size: 0.95rem;
+      color: #d0d0d5;
+      margin-bottom: 0.9rem;
+    }
+
+    .offer-block {
+      border-color: #c0c0c0;
+    }
+
+    .senior-offer-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .senior-price {
+      margin: 0.6rem 0 0.9rem;
+      font-size: 1rem;
+    }
+
+    .senior-price strong {
+      color: var(--primary);
+    }
+
+    .senior-btn {
+      margin-top: 0.8rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .senior-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: #c8c8cf;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: #08080a;
+      padding: 3rem 0 3.5rem;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-text {
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-soft);
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info strong {
+      color: var(--primary);
+    }
+
+    /* SPECIALE SITUATIE BLOK */
+    .contact-extra {
+      background: linear-gradient(145deg, rgba(255, 107, 107, 0.08) 0%, rgba(238, 90, 36, 0.05) 100%);
+      border: 2px solid rgba(255, 107, 107, 0.25);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-extra::before {
+      content: "✨";
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-size: 4rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+
+    .contact-extra-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ff6b6b;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-extra-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .btn-unique-situation {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      color: white;
+      padding: 1.1rem 2rem;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 10px 30px rgba(238, 90, 36, 0.4);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn-unique-situation:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(238, 90, 36, 0.5);
+    }
+
+    .btn-unique-situation::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-unique-situation:hover::before {
+      left: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #3a3a4a;
+      background: #050509;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6f6f7a;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      margin-top: 0.5rem;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: #111111;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-submit:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      background: #050507;
+      color: #8a8a96;
+      font-size: 0.8rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-inner a {
+      color: var(--text-muted);
+    }
+
+    /* LANGUAGE VISIBILITY */
+    .lang-block {
+      display: none;
+      animation: fadeInLang 0.25s ease;
+    }
+
+    .lang-block.active {
+      display: block;
+    }
+
+    @keyframes fadeInLang {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* RTL for Arabic */
+    .rtl {
+      direction: rtl;
+      text-align: right;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .detail-section,
+      .contact-inner,
+      .senior-grid,
+      .admin-afspraken-grid,
+      .newcomers-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        position: sticky;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .lang-floating {
+        right: 10px;
+        top: 10px;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .intro-letters { 
+        font-size: 4rem; 
+      }
+
+      .modal-content {
+        margin: 1rem;
+        max-height: 95vh;
+      }
+
+      .location-content h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- INTRO ANIMATIE -->
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-letters">
+    <div class="intro-letter" id="letterT">
+      T
+      <span class="intro-meaning">Tijd</span>
+    </div>
+    <div class="intro-letter" id="letterI">
+      I
+      <span class="intro-meaning">Is</span>
+    </div>
+    <div class="intro-letter" id="letterK">
+      K
+      <span class="intro-meaning">Kostbaar</span>
+    </div>
+  </div>
+  <div class="intro-line" id="introLine"></div>
+  <button class="intro-skip" onclick="skipIntro()">Overslaan →</button>
+</div>
+
+<!-- MODAL VOOR SPECIALE SITUATIES -->
+<div class="modal-overlay" id="specialModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeSpecialModal()">×</button>
+      <div class="modal-title">
+        <span>🎯</span>
+        <span id="modalTitleText">Speciale situatie?</span>
+      </div>
+      <div class="modal-subtitle" id="modalSubtitleText">
+        Vertel ons over jouw unieke situatie. Wij denken graag met je mee en zoeken een oplossing op maat.
+      </div>
+    </div>
+    
+    <div class="modal-body">
+      <form action="https://api.web3forms.com/submit" method="POST" id="specialForm">
+        <input type="hidden" name="access_key" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67">
+        <input type="hidden" name="subject" value="[SPECIALE SITUATIE] Nieuwe aanvraag via TIK website">
+        <input type="hidden" name="from_name" value="TIK Website - Speciale Situatie">
+        
+        <div class="modal-form-group">
+          <label for="spec-naam" id="labelName">Jouw naam *</label>
+          <input type="text" id="spec-naam" name="name" required>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="spec-tel" id="labelPhone">Telefoonnummer *</label>
+          <input type="tel" id="spec-tel" name="phone" required>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="spec-email" id="labelEmail">E-mailadres</label>
+          <input type="email" id="spec-email" name="email">
+        </div>
+
+        <div class="modal-form-group">
+          <label for="spec-categorie" id="labelCat">Waar gaat het over? *</label>
+          <select id="spec-categorie" name="categorie" required>
+            <option value="" disabled selected id="optionDefault">Kies een categorie...</option>
+            <option value="anders-wonen" id="optionWoning">Andere woningsituatie</option>
+            <option value="complexe-admin" id="optionAdmin">Complexe administratie</option>
+            <option value="nood-geval" id="optionNood">Nood/dringende situatie</option>
+            <option value="familie" id="optionFamilie">Familie/erfenis zaken</option>
+            <option value="werk" id="optionWerk">Werk/ondernemerschap</option>
+            <option value="overig" id="optionOverig">Iets totaal anders</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="spec-uitleg" id="labelMessage">Leg je situatie uit *</label>
+          <textarea id="spec-uitleg" name="bericht" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-special-modal" id="submitBtn">
+          <span>🚀</span>
+          <span>Verstuur aanvraag</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <!-- TIK LOGO FINAL - GOLD I EDITION -->
+    <div class="logo-wrap">
+      <div class="logo-final">
+        <div class="final-blocks">
+          <!-- T - Zwart met goud -->
+          <div class="final-block final-t">
+            <div class="final-front final-front-dark">
+              <span class="final-letter final-letter-dark">T</span>
+              <span class="final-meaning final-meaning-dark">TIJD</span>
+            </div>
+            <div class="final-side final-side-dark"></div>
+            <div class="final-top final-top-dark"></div>
+          </div>
+          
+          <!-- I - VOLLEDIG GOUD -->
+          <div class="final-block final-i final-active">
+            <div class="final-front final-front-gold">
+              <span class="final-letter final-letter-gold">I</span>
+              <span class="final-dot"></span>
+              <span class="final-meaning final-meaning-gold">IS</span>
+            </div>
+            <div class="final-side final-side-gold"></div>
+            <div class="final-top final-top-gold"></div>
+            <!-- Dubbele ring animatie -->
+            <div class="final-ring final-ring-outer"></div>
+            <div class="final-ring final-ring-inner"></div>
+          </div>
+          
+          <!-- K - Zwart met goud -->
+          <div class="final-block final-k">
+            <div class="final-front final-front-dark">
+              <span class="final-letter final-letter-dark">K</span>
+              <span class="final-meaning final-meaning-dark">KOSTBAAR</span>
+            </div>
+            <div class="final-side final-side-dark"></div>
+            <div class="final-top final-top-dark"></div>
+          </div>
+        </div>
+        
+        <!-- Lijn animatie - verbindt de 3 blocks -->
+        <div class="final-line-container">
+          <div class="final-line-track">
+            <div class="final-line-glow"></div>
+            <div class="final-line-pulse"></div>
+          </div>
+        </div>
+        
+        <!-- Slogan -->
+        <div class="final-slogan">
+          <span id="finalType">jouw gids in België</span>
+          <span class="final-cursor">|</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a onclick="scrollToSection('nieuw')" class="nav-nieuw">Nieuw in België</a>
+      <a onclick="scrollToSection('diensten')" class="nav-diensten">Diensten</a>
+      <a onclick="scrollToSection('woning')" class="nav-woning">Woning</a>
+      <a onclick="scrollToSection('admin')" class="nav-admin">Administratie</a>
+      <a onclick="scrollToSection('senioren')" class="nav-senioren">Senioren</a>
+      <a onclick="scrollToSection('contact')" class="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MODERN LANGUAGE SWITCHER -->
+<div class="lang-floating">
+  <button class="lang-toggle">🌐</button>
+  <div class="lang-menu">
+    <button class="lang-option active" data-lang="nl">🇳🇱 Nederlands</button>
+    <button class="lang-option" data-lang="en">🇬🇧 English</button>
+    <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+    <button class="lang-option" data-lang="ar">🇦🇪 العربية</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ========== NEDERLANDS ========== -->
+  <div class="lang-block active" data-lang-block="nl">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-badge">
+            <span>✔</span>
+            <span>Meer dan 15 jaar ervaring – ondersteuning in meerdere talen</span>
+          </div>
+          <h1 class="hero-title">Alles geregeld zonder stress.</h1>
+          <p class="hero-subtitle">Wij helpen je met wonen, administratie en afspraken in België.</p>
+          <p class="hero-line">Van het zoeken van een woning tot officiële afspraken – jij hoeft het niet alleen te doen.</p>
+          <p class="hero-strong">Jouw rust is geen luxe, maar een recht.</p>
+
+          <div class="hero-cta">
+            <a href="#contact" class="btn-primary">
+              <span>👉</span>
+              <span>Start je gratis gesprek</span>
+            </a>
+            <div class="hero-contact-mini">
+              Bel ons rechtstreeks: <strong>0480 69 33 50</strong><br />
+              Of mail: <strong>info@tik.support</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-title">TIK – jouw gids in België</div>
+          <ul class="hero-card-list">
+            <li><span>•</span><div>Persoonlijke begeleiding bij wonen, administratie en afspraken.</div></li>
+            <li><span>•</span><div>We spreken jouw taal en leggen alles duidelijk uit.</div></li>
+            <li><span>•</span><div>We beschermen jouw belangen bij contracten en officiële stappen.</div></li>
+          </ul>
+          <div class="hero-card-note">
+            Geen stress, geen onduidelijkheid – één aanspreekpunt voor alles wat je moet regelen.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LOCATION SHOWCASE (ANTWERPEN FOTO) -->
+    <section class="location-showcase" id="locatie">
+      <div class="location-image-wrap">
+        <img src="https://images.unsplash.com/photo-1565626424178-c699f6601afd?w=1920&q=80" 
+             alt="Antwerpen by night - Kathedraal en Schelde" />
+        <div class="location-overlay">
+          <div class="location-content">
+            <h2>Jouw gids in <span class="highlight">Antwerpen</span> & heel België</h2>
+            <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk.</p>
+          </div>
+        </div>
+        <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- NIEUW IN BELGIË SECTION -->
+    <section id="nieuw" class="newcomers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Nieuwkomers</div>
+          <h2 class="section-title">Nieuw in België? Wij begeleiden je van A tot Z</h2>
+          <p class="section-subtitle">
+            Verhuizen naar België is niet eenvoudig. Nieuwe regels, taalbarrière en veel administratie. 
+            Wij zorgen dat jij alles correct, snel en zonder stress regelt.
+          </p>
+        </div>
+
+        <div class="newcomers-grid">
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏠</div>
+            <h3>Wonen</h3>
+            <ul>
+              <li>Hulp bij het zoeken naar een woning</li>
+              <li>Contact met eigenaars en makelaars</li>
+              <li>Begeleiding bij bezichtigingen</li>
+              <li>Controle van huurcontracten</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏛️</div>
+            <h3>Officiële registratie</h3>
+            <ul>
+              <li>Inschrijving bij de gemeente</li>
+              <li>Aanvraag van verblijfsdocumenten</li>
+              <li>Adresregistratie</li>
+              <li>Gids door administratie</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">⚡</div>
+            <h3>Contracten & nutsvoorzieningen</h3>
+            <ul>
+              <li>Elektriciteit, gas en water</li>
+              <li>Internet en telecom</li>
+              <li>Verzekeringen (brand, aansprakelijkheid)</li>
+              <li>Alle praktische regelingen</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏥</div>
+            <h3>Gezondheid</h3>
+            <ul>
+              <li>Aansluiting bij een ziekenfonds</li>
+              <li>Inschrijving bij een huisarts</li>
+              <li>Uitleg over het Belgische zorgsysteem</li>
+              <li>Hulp bij apotheek en specialisten</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏦</div>
+            <h3>Financieel</h3>
+            <ul>
+              <li>Openen van een bankrekening</li>
+              <li>Uitleg over betalingen en facturen</li>
+              <li>Administratie beheer</li>
+              <li>Budgettering advies</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🗂️</div>
+            <h3>Administratie & begeleiding</h3>
+            <ul>
+              <li>Uitleg van alle documenten en brieven</li>
+              <li>Begeleiding bij afspraken</li>
+              <li>Vertaling en ondersteuning</li>
+              <li>Persoonlijke opvolging</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newcomers-cta">
+          <button onclick="scrollToSection('contact')" class="btn-primary btn-large">
+            <span>👉</span>
+            <span>Ik ben nieuw – help mij starten</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIENSTEN -->
+    <section id="diensten">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Diensten</div>
+          <h2 class="section-title">Hoe wij jou helpen in België</h2>
+          <p class="section-subtitle">Drie pijlers, één doel: jouw leven hier eenvoudiger en rustiger maken.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🏠</div>
+            <div class="service-title">Woning zoeken</div>
+            <div class="service-sub">Snel een woning vinden zonder stress</div>
+            <p class="service-text">
+              Wij helpen je actief bij het vinden van een geschikte woning en regelen alles van A tot Z.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📄</div>
+            <div class="service-title">Administratie & Afspraken</div>
+            <div class="service-sub">Geen gedoe met papierwerk</div>
+            <p class="service-text">
+              Wij nemen jouw administratie en officiële afspraken volledig uit handen. Geen stress, geen verwarring.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">👥</div>
+            <div class="service-title">Senioren ondersteuning</div>
+            <div class="service-sub">Persoonlijke hulp met respect</div>
+            <p class="service-text">
+              Geduldige begeleiding voor senioren bij alle administratie en afspraken.
+            </p>
+          </div>
+        </div>
+
+        <div class="section-cta-center">
+          <button onclick="scrollToSection('contact')" class="btn-primary">
+            <span>👉</span>
+            <span>Start je gratis gesprek</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WONING ZOEKEN DETAIL -->
+    <section id="woning">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Woning zoeken</div>
+          <h2 class="section-title">Woning zoeken zonder fouten</h2>
+          <p class="section-subtitle">
+            Wij begrijpen jouw situatie en besparen je tijd, moeite en stress.
+          </p>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-box">
+            <p class="detail-text">
+              Een woning zoeken in een nieuw land is niet eenvoudig. Andere regels, andere gewoontes,
+              andere verwachtingen. Wij staan aan jouw kant en zorgen dat je geen belangrijke details mist.
+            </p>
+            <ul class="detail-list">
+              <li><span>✔</span><div>Contact met makelaars en verhuurders</div></li>
+              <li><span>✔</span><div>Afspraken en bezichtigingen organiseren</div></li>
+              <li><span>✔</span><div>Gerichte en snelle woningzoektocht</div></li>
+              <li><span>✔</span><div>Controle van huurcontracten</div></li>
+            </ul>
+            <p class="detail-strong">
+              Wij werken volledig onafhankelijk en beschermen jouw belangen. Zo vermijden we onduidelijke
+              of risicovolle huurcontracten.
+            </p>
+          </div>
+
+          <div class="detail-box">
+            <p class="detail-text">
+              Vertel ons wat je zoekt – locatie, budget, gezinssituatie – en wij filteren de opties voor jou.
+              Jij beslist, wij regelen de rest.
+            </p>
+            <button onclick="scrollToSection('contact')" class="btn-primary">
+              <span>👉</span>
+              <span>Vertel ons wat je zoekt</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMINISTRATIE & AFSPRAKEN (SAMENGEVOEGD) -->
+    <section id="admin">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Administratie</div>
+          <h2 class="section-title">Administratie & Afspraken</h2>
+          <p class="section-subtitle">
+            Wij nemen jouw administratie en afspraken volledig uit handen. Geen stress, geen verwarring — wij begeleiden je stap voor stap.
+          </p>
+        </div>
+
+        <div class="admin-afspraken-grid">
+          <div class="admin-card">
+            <h3>📋 Wat wij voor jou regelen:</h3>
+            <ul>
+              <li>Beheer en uitleg van brieven, documenten en e-mails</li>
+              <li>Contact met overheidsdiensten en officiële instanties</li>
+              <li>Inplannen en organiseren van afspraken</li>
+              <li>Voorbereiding op afspraken (wat moet je zeggen/doen)</li>
+              <li>Persoonlijke begeleiding naar afspraken (met praktische vertaling)</li>
+              <li>Nazorg: uitleg van wat er besproken werd en volgende stappen</li>
+            </ul>
+          </div>
+
+          <div class="admin-card">
+            <h3>✨ Extra ondersteuning:</h3>
+            <ul>
+              <li>Openen van een bankrekening</li>
+              <li>Inschrijving bij een huisarts</li>
+              <li>Hulp bij verzekeringen (keuze en afsluiten)</li>
+              <li>Energiecontracten (elektriciteit, gas, internet)</li>
+              <li>Gemeente-inschrijving en documenten</li>
+              <li>Telefonische ondersteuning bij vragen</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-cta-center" style="margin-top: 2rem;">
+          <button onclick="scrollToSection('contact')" class="btn-primary">
+            <span>👉</span>
+            <span>Start met administratieve hulp</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+   
 
     /* NIEUW IN BELGIË SECTION */
     .newcomers-section {
