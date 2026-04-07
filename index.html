@@ -49,7 +49,7 @@
       padding: 0 1.5rem;
     }
 
-    /* HEADER */
+    /* HEADER - LOGO LAGER GEZET */
     header {
       position: sticky;
       top: 0;
@@ -57,14 +57,22 @@
       backdrop-filter: blur(16px);
       background: rgba(11, 11, 13, 0.88);
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 0;
+      padding: 0.5rem 0;
       gap: 1rem;
+    }
+
+    /* LOGO WRAPPER MET EXTRA MARGINS */
+    .logo-wrap {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     /* TIK LOGO FINAL - GOLD I EDITION CSS */
@@ -74,6 +82,7 @@
       align-items: flex-start;
       gap: 0.8rem;
       perspective: 1000px;
+      margin-top: 0.5rem;
     }
 
     .final-blocks {
@@ -864,7 +873,7 @@
       color: var(--text-soft);
     }
 
-    /* ===== LOCATION SHOWCASE MET FOTO ===== */
+    /* ===== LOCATION SHOWCASE MET FOTO - VERBETERD ===== */
     .location-showcase {
       width: 100%;
       background: var(--bg);
@@ -905,6 +914,8 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(242, 201, 76, 0.2);
       transform: perspective(1000px) rotateY(-5deg);
       transition: transform 0.4s ease;
+      background: #1a1a24;
+      min-height: 350px;
     }
 
     .location-image-box:hover {
@@ -916,6 +927,7 @@
       height: 350px;
       object-fit: cover;
       display: block;
+      background: linear-gradient(135deg, #2a2a33 0%, #1a1a24 100%);
     }
 
     .location-image-overlay {
@@ -923,12 +935,13 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(11,11,13,0.9), transparent);
+      background: linear-gradient(to top, rgba(11,11,13,0.95) 0%, rgba(11,11,13,0.7) 50%, transparent 100%);
       padding: 2rem 1.5rem 1.5rem;
       color: var(--primary);
       font-weight: 600;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
+      text-align: center;
     }
 
     @media (max-width: 900px) {
@@ -1694,8 +1707,7 @@
 </div>
 
 <main>
-
-  <!-- ========== NEDERLANDS ========== -->
+    <!-- ========== NEDERLANDS ========== -->
   <div class="lang-block active" data-lang-block="nl">
 
     <!-- HERO -->
@@ -1712,7 +1724,7 @@
           <p class="hero-strong">Jouw rust is geen luxe, maar een recht.</p>
 
           <div class="hero-cta">
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-nl" class="btn-primary">
               <span>👉</span>
               <span>Start je gratis gesprek</span>
             </a>
@@ -1737,7 +1749,7 @@
       </div>
     </section>
 
-    <!-- LOCATION SHOWCASE MET FOTO -->
+    <!-- LOCATION SHOWCASE MET FOTO - VERBETERD -->
     <section class="location-showcase">
       <div class="container">
         <div class="location-grid">
@@ -1746,9 +1758,10 @@
             <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk bij elke stap.</p>
           </div>
           <div class="location-image-box">
-            <img src="https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80" 
-                 alt="Antwerpen Kathedraal" />
-            <div class="location-image-overlay">ONZE-LIEVE-VROUWEKATHEDRAAL</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Antwerp_Skyline_at_Night.jpg/800px-Antwerp_Skyline_at_Night.jpg" 
+                 alt="Antwerpen bij nacht" 
+                 onerror="this.src='https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80'"/>
+            <div class="location-image-overlay">ANTWERPEN - DE SCHELDE</div>
           </div>
         </div>
       </div>
@@ -1835,7 +1848,7 @@
         </div>
 
         <div class="newcomers-cta">
-          <a href="#contact" class="btn-primary btn-large">
+          <a href="#contact-nl" class="btn-primary btn-large">
             <span>👉</span>
             <span>Ik ben nieuw – help mij starten</span>
           </a>
@@ -1882,7 +1895,7 @@
         </div>
 
         <div class="section-cta-center">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-nl" class="btn-primary">
             <span>👉</span>
             <span>Start je gratis gesprek</span>
           </a>
@@ -1924,7 +1937,7 @@
               Vertel ons wat je zoekt – locatie, budget, gezinssituatie – en wij filteren de opties voor jou.
               Jij beslist, wij regelen de rest.
             </p>
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-nl" class="btn-primary">
               <span>👉</span>
               <span>Vertel ons wat je zoekt</span>
             </a>
@@ -1971,7 +1984,7 @@
         </div>
 
         <div class="section-cta-center" style="margin-top: 2rem;">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-nl" class="btn-primary">
             <span>👉</span>
             <span>Start met administratieve hulp</span>
           </a>
@@ -2034,7 +2047,7 @@
               Zo voorkomt u fouten, bespaart u tijd en heeft u altijd iemand die u kan helpen.
             </p>
 
-            <a href="#contact" class="btn-primary senior-btn">
+            <a href="#contact-nl" class="btn-primary senior-btn">
               <span>👉</span>
               <span>Start vandaag met ondersteuning</span>
             </a>
@@ -2047,8 +2060,8 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
+    <!-- CONTACT - UNIEK ID VOOR NL -->
+    <section id="contact-nl" class="contact-section">
       <div class="container contact-inner">
         <div>
           <h2 class="contact-title">Start jouw gratis gesprek</h2>
@@ -2140,7 +2153,7 @@
           <p class="hero-strong">Your peace of mind is not a luxury, but a right.</p>
 
           <div class="hero-cta">
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-en" class="btn-primary">
               <span>👉</span>
               <span>Start your free consultation</span>
             </a>
@@ -2174,9 +2187,10 @@
             <p>From the Scheldt river to the smallest municipality – we know the way and guide you personally through every step.</p>
           </div>
           <div class="location-image-box">
-            <img src="https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80" 
-                 alt="Antwerp Cathedral" />
-            <div class="location-image-overlay">CATHEDRAL OF OUR LADY</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Antwerp_Skyline_at_Night.jpg/800px-Antwerp_Skyline_at_Night.jpg" 
+                 alt="Antwerp at night" 
+                 onerror="this.src='https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80'"/>
+            <div class="location-image-overlay">ANTWERP - THE SCHELDT</div>
           </div>
         </div>
       </div>
@@ -2263,7 +2277,7 @@
         </div>
 
         <div class="newcomers-cta">
-          <a href="#contact" class="btn-primary btn-large">
+          <a href="#contact-en" class="btn-primary btn-large">
             <span>👉</span>
             <span>I'm new – help me get started</span>
           </a>
@@ -2309,7 +2323,7 @@
         </div>
 
         <div class="section-cta-center">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-en" class="btn-primary">
             <span>👉</span>
             <span>Start your free consultation</span>
           </a>
@@ -2349,7 +2363,7 @@
               Tell us what you are looking for – location, budget, family situation – and we filter the options.
               You decide, we arrange the rest.
             </p>
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-en" class="btn-primary">
               <span>👉</span>
               <span>Tell us what you need</span>
             </a>
@@ -2395,7 +2409,7 @@
         </div>
 
         <div class="section-cta-center" style="margin-top: 2rem;">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-en" class="btn-primary">
             <span>👉</span>
             <span>Start with administrative help</span>
           </a>
@@ -2457,7 +2471,7 @@
               This helps you avoid mistakes, save time and always have someone to assist you.
             </p>
 
-            <a href="#contact" class="btn-primary senior-btn">
+            <a href="#contact-en" class="btn-primary senior-btn">
               <span>👉</span>
               <span>Start support today</span>
             </a>
@@ -2470,7 +2484,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="contact-en" class="contact-section">
       <div class="container contact-inner">
         <div>
           <h2 class="contact-title">Start your free consultation</h2>
@@ -2561,7 +2575,7 @@
           <p class="hero-strong">Votre tranquillité n'est pas un luxe, mais un droit.</p>
 
           <div class="hero-cta">
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-fr" class="btn-primary">
               <span>👉</span>
               <span>Commencez votre consultation gratuite</span>
             </a>
@@ -2595,9 +2609,10 @@
             <p>De l'Escaut à la plus petite commune – nous connaissons le chemin et vous guidons personnellement.</p>
           </div>
           <div class="location-image-box">
-            <img src="https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80" 
-                 alt="Cathédrale d'Anvers" />
-            <div class="location-image-overlay">CATHÉDRALE NOTRE-DAME</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Antwerp_Skyline_at_Night.jpg/800px-Antwerp_Skyline_at_Night.jpg" 
+                 alt="Anvers la nuit" 
+                 onerror="this.src='https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80'"/>
+            <div class="location-image-overlay">ANVERS - L'ESCAUT</div>
           </div>
         </div>
       </div>
@@ -2684,7 +2699,7 @@
         </div>
 
         <div class="newcomers-cta">
-          <a href="#contact" class="btn-primary btn-large">
+          <a href="#contact-fr" class="btn-primary btn-large">
             <span>👉</span>
             <span>Je suis nouveau – aidez-moi à démarrer</span>
           </a>
@@ -2730,7 +2745,7 @@
         </div>
 
         <div class="section-cta-center">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-fr" class="btn-primary">
             <span>👉</span>
             <span>Commencez votre consultation gratuite</span>
           </a>
@@ -2770,7 +2785,7 @@
               Dites‑nous ce que vous cherchez – localisation, budget, situation familiale – et nous filtrons les options.
               Vous décidez, nous nous occupons du reste.
             </p>
-            <a href="#contact" class="btn-primary">
+            <a href="#contact-fr" class="btn-primary">
               <span>👉</span>
               <span>Parlez-nous de votre projet</span>
             </a>
@@ -2816,7 +2831,7 @@
         </div>
 
         <div class="section-cta-center" style="margin-top: 2rem;">
-          <a href="#contact" class="btn-primary">
+          <a href="#contact-fr" class="btn-primary">
             <span>👉</span>
             <span>Commencez avec l'aide administrative</span>
           </a>
@@ -2878,7 +2893,7 @@
               Vous évitez ainsi les erreurs, gagnez du temps et avez toujours quelqu'un pour vous aider.
             </p>
 
-            <a href="#contact" class="btn-primary senior-btn">
+            <a href="#contact-fr" class="btn-primary senior-btn">
               <span>👉</span>
               <span>Commencez l'accompagnement dès aujourd'hui</span>
             </a>
@@ -2891,7 +2906,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="contact-fr" class="contact-section">
       <div class="container contact-inner">
         <div>
           <h2 class="contact-title">Commencez votre consultation gratuite</h2>
