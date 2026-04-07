@@ -397,6 +397,7 @@
       color: var(--text-soft);
       position: relative;
       padding-bottom: 0.15rem;
+      cursor: pointer;
     }
 
     .nav-links a::after {
@@ -945,11 +946,89 @@
         height: 400px;
       }
       .location-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .location-content p {
         font-size: 1rem;
         padding: 0 1rem;
+      }
+    }
+
+    /* ===== EXTRA FOTO SECTIE ===== */
+    .extra-photo-section {
+      padding: 4rem 0;
+      background: var(--bg);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .photo-box {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(242, 201, 76, 0.2);
+      border: 2px solid rgba(242, 201, 76, 0.3);
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(11, 11, 13, 0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .photo-overlay h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .photo-overlay p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .photo-text-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .photo-text-content h2 span {
+      color: var(--primary);
+    }
+
+    .photo-text-content p {
+      color: var(--text-soft);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+      .photo-box img {
+        height: 300px;
       }
     }
 
@@ -1034,7 +1113,7 @@
     /* DETAIL SECTIONS */
     .detail-section {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 2rem;
       align-items: flex-start;
     }
@@ -1221,7 +1300,7 @@
 
     .senior-grid {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 2rem;
       align-items: flex-start;
     }
@@ -1285,7 +1364,7 @@
 
     .contact-inner {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 2rem;
       align-items: flex-start;
     }
@@ -1495,7 +1574,8 @@
       .contact-inner,
       .senior-grid,
       .admin-afspraken-grid,
-      .newcomers-grid {
+      .newcomers-grid,
+      .photo-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1674,12 +1754,12 @@
     </div>
 
     <nav class="nav-links">
-      <a href="#nieuw" class="nav-nieuw">Nieuw in België</a>
-      <a href="#diensten" class="nav-diensten">Diensten</a>
-      <a href="#woning" class="nav-woning">Woning</a>
-      <a href="#admin" class="nav-admin">Administratie</a>
-      <a href="#senioren" class="nav-senioren">Senioren</a>
-      <a href="#contact" class="nav-contact">Contact</a>
+      <a href="#nieuw" class="nav-nieuw" data-nav="nieuw">Nieuw in België</a>
+      <a href="#diensten" class="nav-diensten" data-nav="diensten">Diensten</a>
+      <a href="#woning" class="nav-woning" data-nav="woning">Woning</a>
+      <a href="#admin" class="nav-admin" data-nav="admin">Administratie</a>
+      <a href="#senioren" class="nav-senioren" data-nav="senioren">Senioren</a>
+      <a href="#contact" class="nav-contact" data-nav="contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -1743,7 +1823,7 @@
     <section class="location-showcase">
       <div class="location-image-wrap">
         <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
-             alt="Antwerpen by night - Kathedraal en Schelde" />
+             alt="Antwerpen by night" />
         <div class="location-overlay">
           <div class="location-content">
             <h2>Jouw gids in <span class="highlight">Antwerpen</span> & heel België</h2>
@@ -1751,6 +1831,31 @@
           </div>
         </div>
         <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- EXTRA FOTO SECTIE -->
+    <section class="extra-photo-section">
+      <div class="container">
+        <div class="photo-grid">
+          <div class="photo-box">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" 
+                 alt="Modern appartement Antwerpen" />
+            <div class="photo-overlay">
+              <h3>🏠 Jouw nieuwe thuis</h3>
+              <p>We helpen je de perfecte woning vinden in Antwerpen of elders in België</p>
+            </div>
+          </div>
+          <div class="photo-text-content">
+            <h2>Lokaal expertise, <span>persoonlijk</span> contact</h2>
+            <p>Als je nieuw bent in België, kan alles overweldigend aanvoelen. Wij zijn er om je te helpen bij elke stap – van het vinden van een woning tot het begrijpen van de lokale gewoontes en regels.</p>
+            <p>Ons team spreekt meerdere talen en kent de Belgische bureaucratie door en door. We zorgen dat jij je snel thuis voelt.</p>
+            <a href="#nieuw" class="btn-primary">
+              <span>👉</span>
+              <span>Ontdek onze diensten</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
