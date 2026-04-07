@@ -306,7 +306,6 @@
       overflow: hidden;
     }
 
-    /* Gloeiende lijn die heen en weer gaat */
     .final-line-glow {
       position: absolute;
       width: 40%;
@@ -330,7 +329,6 @@
       100% { left: 100%; opacity: 0; }
     }
 
-    /* Pulse die achter de gloed loopt */
     .final-line-pulse {
       position: absolute;
       width: 100%;
@@ -348,7 +346,6 @@
       50% { opacity: 0.8; transform: scaleX(1); }
     }
 
-    /* Slogan */
     .final-slogan {
       font-size: 0.9rem;
       color: var(--text-soft);
@@ -370,7 +367,6 @@
       50% { opacity: 0; }
     }
 
-    /* Hover effects */
     .final-blocks:hover .final-t {
       transform: translateY(-8px) rotate(-5deg);
     }
@@ -381,7 +377,6 @@
       transform: translateY(-25px);
     }
 
-    /* Responsive logo */
     @media (max-width: 600px) {
       .final-block { width: 2.8rem; height: 3.8rem; }
       .final-i { width: 3.4rem; height: 4.8rem; }
@@ -587,7 +582,7 @@
       color: var(--text-main);
     }
 
-    /* ===== MODAL VOOR SPECIALE SITUATIES ===== */
+    /* ===== MODAL ===== */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -813,6 +808,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       border: none;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
@@ -866,6 +862,95 @@
     .hero-card-note {
       font-size: 0.8rem;
       color: var(--text-soft);
+    }
+
+    /* ===== LOCATION SHOWCASE (ANTWERPEN FOTO) ===== */
+    .location-showcase {
+      width: 100%;
+      position: relative;
+      margin: 0;
+    }
+
+    .location-image-wrap {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .location-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.6) contrast(1.1);
+    }
+
+    .location-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 11, 13, 0.3) 0%,
+        rgba(11, 11, 13, 0.7) 70%,
+        rgba(11, 11, 13, 0.95) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .location-content h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .location-content .highlight {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(242, 201, 76, 0.6);
+    }
+
+    .location-content p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .location-gold-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary) 30%, 
+        var(--primary) 70%, 
+        transparent 100%
+      );
+      box-shadow: 0 0 20px rgba(242, 201, 76, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .location-image-wrap {
+        height: 400px;
+      }
+      .location-content h2 {
+        font-size: 2rem;
+      }
+      .location-content p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
     }
 
     /* SECTIONS */
@@ -949,7 +1034,7 @@
     /* DETAIL SECTIONS */
     .detail-section {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
       gap: 2rem;
       align-items: flex-start;
     }
@@ -998,6 +1083,137 @@
       color: var(--text-muted);
     }
 
+    /* ADMINISTRATIE & AFSPRAKEN (SAMENGEVOEGD) */
+    .admin-afspraken-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .admin-card {
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .admin-card h3 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .admin-card ul {
+      list-style: none;
+    }
+
+    .admin-card li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-soft);
+    }
+
+    .admin-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* NIEUW IN BELGIË SECTION */
+    .newcomers-section {
+      background: linear-gradient(145deg, #0f0f14 0%, #15151b 100%);
+      border-top: 1px solid rgba(242, 201, 76, 0.1);
+      border-bottom: 1px solid rgba(242, 201, 76, 0.1);
+    }
+
+    .newcomers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .newcomer-card {
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newcomer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .newcomer-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .newcomer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(242, 201, 76, 0.3);
+    }
+
+    .newcomer-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .newcomer-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .newcomer-card ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .newcomer-card li {
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .newcomer-card li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .newcomers-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .btn-large {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.1rem;
+    }
+
     /* SENIOREN SECTION */
     .senior-section {
       background: #101015;
@@ -1005,7 +1221,7 @@
 
     .senior-grid {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
       gap: 2rem;
       align-items: flex-start;
     }
@@ -1069,7 +1285,7 @@
 
     .contact-inner {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
       gap: 2rem;
       align-items: flex-start;
     }
@@ -1277,7 +1493,9 @@
       .hero-inner,
       .detail-section,
       .contact-inner,
-      .senior-grid {
+      .senior-grid,
+      .admin-afspraken-grid,
+      .newcomers-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1306,6 +1524,10 @@
       .modal-content {
         margin: 1rem;
         max-height: 95vh;
+      }
+
+      .location-content h2 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -1452,10 +1674,10 @@
     </div>
 
     <nav class="nav-links">
+      <a href="#nieuw" class="nav-nieuw">Nieuw in België</a>
       <a href="#diensten" class="nav-diensten">Diensten</a>
-      <a href="#woning-zoeken" class="nav-woning">Woning</a>
-      <a href="#administratie" class="nav-admin">Administratie</a>
-      <a href="#afspraken" class="nav-afspraken">Afspraken</a>
+      <a href="#woning" class="nav-woning">Woning</a>
+      <a href="#admin" class="nav-admin">Administratie</a>
       <a href="#senioren" class="nav-senioren">Senioren</a>
       <a href="#contact" class="nav-contact">Contact</a>
     </nav>
@@ -1517,6 +1739,110 @@
       </div>
     </section>
 
+    <!-- LOCATION SHOWCASE (ANTWERPEN FOTO) -->
+    <section class="location-showcase">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Antwerpen by night - Kathedraal en Schelde" />
+        <div class="location-overlay">
+          <div class="location-content">
+            <h2>Jouw gids in <span class="highlight">Antwerpen</span> & heel België</h2>
+            <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk.</p>
+          </div>
+        </div>
+        <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- NIEUW IN BELGIË SECTION -->
+    <section id="nieuw" class="newcomers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Nieuwkomers</div>
+          <h2 class="section-title">Nieuw in België? Wij begeleiden je van A tot Z</h2>
+          <p class="section-subtitle">
+            Verhuizen naar België is niet eenvoudig. Nieuwe regels, taalbarrière en veel administratie. 
+            Wij zorgen dat jij alles correct, snel en zonder stress regelt.
+          </p>
+        </div>
+
+        <div class="newcomers-grid">
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏠</div>
+            <h3>Wonen</h3>
+            <ul>
+              <li>Hulp bij het zoeken naar een woning</li>
+              <li>Contact met eigenaars en makelaars</li>
+              <li>Begeleiding bij bezichtigingen</li>
+              <li>Controle van huurcontracten</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏛️</div>
+            <h3>Officiële registratie</h3>
+            <ul>
+              <li>Inschrijving bij de gemeente</li>
+              <li>Aanvraag van verblijfsdocumenten</li>
+              <li>Adresregistratie</li>
+              <li>Gids door administratie</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">⚡</div>
+            <h3>Contracten & nutsvoorzieningen</h3>
+            <ul>
+              <li>Elektriciteit, gas en water</li>
+              <li>Internet en telecom</li>
+              <li>Verzekeringen (brand, aansprakelijkheid)</li>
+              <li>Alle praktische regelingen</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏥</div>
+            <h3>Gezondheid</h3>
+            <ul>
+              <li>Aansluiting bij een ziekenfonds</li>
+              <li>Inschrijving bij een huisarts</li>
+              <li>Uitleg over het Belgische zorgsysteem</li>
+              <li>Hulp bij apotheek en specialisten</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏦</div>
+            <h3>Financieel</h3>
+            <ul>
+              <li>Openen van een bankrekening</li>
+              <li>Uitleg over betalingen en facturen</li>
+              <li>Administratie beheer</li>
+              <li>Budgettering advies</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🗂️</div>
+            <h3>Administratie & begeleiding</h3>
+            <ul>
+              <li>Uitleg van alle documenten en brieven</li>
+              <li>Begeleiding bij afspraken</li>
+              <li>Vertaling en ondersteuning</li>
+              <li>Persoonlijke opvolging</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newcomers-cta">
+          <a href="#contact" class="btn-primary btn-large">
+            <span>👉</span>
+            <span>Ik ben nieuw – help mij starten</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- DIENSTEN -->
     <section id="diensten">
       <div class="container">
@@ -1538,19 +1864,19 @@
 
           <div class="service-card">
             <div class="service-icon">📄</div>
-            <div class="service-title">Administratie</div>
-            <div class="service-sub">Geen gedoe met administratie</div>
+            <div class="service-title">Administratie & Afspraken</div>
+            <div class="service-sub">Geen gedoe met papierwerk</div>
             <p class="service-text">
-              Wij regelen documenten, contracten, energie, internet en officiële zaken voor jou.
+              Wij nemen jouw administratie en officiële afspraken volledig uit handen. Geen stress, geen verwarring.
             </p>
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📅</div>
-            <div class="service-title">Afspraken</div>
-            <div class="service-sub">Begeleiding bij afspraken</div>
+            <div class="service-icon">👥</div>
+            <div class="service-title">Senioren ondersteuning</div>
+            <div class="service-sub">Persoonlijke hulp met respect</div>
             <p class="service-text">
-              Wij plannen en begeleiden je bij afspraken met officiële instanties.
+              Geduldige begeleiding voor senioren bij alle administratie en afspraken.
             </p>
           </div>
         </div>
@@ -1565,7 +1891,7 @@
     </section>
 
     <!-- WONING ZOEKEN DETAIL -->
-    <section id="woning-zoeken">
+    <section id="woning">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Woning zoeken</div>
@@ -1585,6 +1911,7 @@
               <li><span>✔</span><div>Contact met makelaars en verhuurders</div></li>
               <li><span>✔</span><div>Afspraken en bezichtigingen organiseren</div></li>
               <li><span>✔</span><div>Gerichte en snelle woningzoektocht</div></li>
+              <li><span>✔</span><div>Controle van huurcontracten</div></li>
             </ul>
             <p class="detail-strong">
               Wij werken volledig onafhankelijk en beschermen jouw belangen. Zo vermijden we onduidelijke
@@ -1606,76 +1933,48 @@
       </div>
     </section>
 
-    <!-- ADMINISTRATIE -->
-    <section id="administratie">
+    <!-- ADMINISTRATIE & AFSPRAKEN (SAMENGEVOEGD) -->
+    <section id="admin">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Administratie</div>
-          <h2 class="section-title">Administratieve hulp zonder stress</h2>
+          <h2 class="section-title">Administratie & Afspraken</h2>
           <p class="section-subtitle">
-            Wij zorgen dat alles correct en duidelijk geregeld wordt.
+            Wij nemen jouw administratie en afspraken volledig uit handen. Geen stress, geen verwarring — wij begeleiden je stap voor stap.
           </p>
         </div>
 
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Energie, gas en internet contracten</div></li>
-              <li><span>✔</span><div>Verzekeringen en advies</div></li>
-              <li><span>✔</span><div>Inschrijving bij gemeente</div></li>
-              <li><span>✔</span><div>Uitleg van brieven en documenten</div></li>
-              <li><span>✔</span><div>Bankrekening openen</div></li>
-              <li><span>✔</span><div>Hulp bij huisarts registratie</div></li>
+        <div class="admin-afspraken-grid">
+          <div class="admin-card">
+            <h3>📋 Wat wij voor jou regelen:</h3>
+            <ul>
+              <li>Beheer en uitleg van brieven, documenten en e-mails</li>
+              <li>Contact met overheidsdiensten en officiële instanties</li>
+              <li>Inplannen en organiseren van afspraken</li>
+              <li>Voorbereiding op afspraken (wat moet je zeggen/doen)</li>
+              <li>Persoonlijke begeleiding naar afspraken (met praktische vertaling)</li>
+              <li>Nazorg: uitleg van wat er besproken werd en volgende stappen</li>
             </ul>
           </div>
 
-          <div class="detail-box">
-            <p class="detail-text">
-              Je hoeft niet alles zelf uit te zoeken. Wij leggen je stap voor stap uit wat nodig is,
-              wat belangrijk is en wat je beter kan vermijden.
-            </p>
-            <p class="detail-strong">
-              Eén aanspreekpunt voor al je praktische vragen – in duidelijke taal.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AFSPRAKEN -->
-    <section id="afspraken">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Officiële afspraken</div>
-          <h2 class="section-title">Hulp bij officiële afspraken</h2>
-          <p class="section-subtitle">
-            Wij plannen en begeleiden jouw afspraken zonder stress.
-          </p>
-        </div>
-
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Gemeente</div></li>
-              <li><span>✔</span><div>Gezondheidsdiensten</div></li>
-              <li><span>✔</span><div>Verzekeringen</div></li>
-              <li><span>✔</span><div>Overheidsinstanties</div></li>
+          <div class="admin-card">
+            <h3>✨ Extra ondersteuning:</h3>
+            <ul>
+              <li>Openen van een bankrekening</li>
+              <li>Inschrijving bij een huisarts</li>
+              <li>Hulp bij verzekeringen (keuze en afsluiten)</li>
+              <li>Energiecontracten (elektriciteit, gas, internet)</li>
+              <li>Gemeente-inschrijving en documenten</li>
+              <li>Telefonische ondersteuning bij vragen</li>
             </ul>
-            <p class="detail-strong">
-              Je staat er niet alleen voor. Wij begeleiden je stap voor stap.
-            </p>
           </div>
+        </div>
 
-          <div class="detail-box">
-            <p class="detail-text">
-              We helpen je bij het voorbereiden van documenten, het begrijpen van brieven en het
-              stellen van de juiste vragen tijdens afspraken.
-            </p>
-            <a href="#contact" class="btn-primary">
-              <span>👉</span>
-              <span>Plan je eerste gesprek</span>
-            </a>
-          </div>
+        <div class="section-cta-center" style="margin-top: 2rem;">
+          <a href="#contact" class="btn-primary">
+            <span>👉</span>
+            <span>Start met administratieve hulp</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1769,20 +2068,21 @@
               <span>Ik heb een speciale situatie</span>
             </button>
           </div>
-<!-- In je contact-extra blok, voeg een tweede knop toe -->
-<div class="contact-extra">
-  <h3 class="contact-extra-title">Direct contact?</h3>
-  <p class="contact-extra-text">
-    Liever direct chatten? Stuur ons een WhatsApp bericht!
-  </p>
-  <a href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." 
-     class="btn-whatsapp" 
-     target="_blank"
-     style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
-    <span style="font-size: 1.3rem;">📱</span>
-    <span>Start WhatsApp chat</span>
-  </a>
-</div>
+
+          <div class="contact-extra">
+            <h3 class="contact-extra-title">Direct contact?</h3>
+            <p class="contact-extra-text">
+              Liever direct chatten? Stuur ons een WhatsApp bericht!
+            </p>
+            <a href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." 
+               class="btn-primary" 
+               target="_blank"
+               style="background: #25d366; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
+              <span style="font-size: 1.3rem;">📱</span>
+              <span>Start WhatsApp chat</span>
+            </a>
+          </div>
+
           <div class="contact-info">
             <div><strong>Telefoon:</strong> <a href="tel:+32480693350">0480 69 33 50</a></div>
             <div><strong>E-mail:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
@@ -1866,7 +2166,111 @@
       </div>
     </section>
 
-    <section id="diensten-en">
+    <!-- LOCATION SHOWCASE EN -->
+    <section class="location-showcase">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Antwerp by night - Cathedral and Scheldt" />
+        <div class="location-overlay">
+          <div class="location-content">
+            <h2>Your guide in <span class="highlight">Antwerp</span> & all of Belgium</h2>
+            <p>From the Scheldt river to the smallest municipality – we know the way and guide you personally.</p>
+          </div>
+        </div>
+        <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- NEW IN BELGIUM SECTION EN -->
+    <section id="nieuw" class="newcomers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Newcomers</div>
+          <h2 class="section-title">New to Belgium? We guide you from A to Z</h2>
+          <p class="section-subtitle">
+            Moving to Belgium is not easy. New rules, language barriers and lots of administration. 
+            We ensure you arrange everything correctly, quickly and without stress.
+          </p>
+        </div>
+
+        <div class="newcomers-grid">
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏠</div>
+            <h3>Housing</h3>
+            <ul>
+              <li>Help with finding a home</li>
+              <li>Contact with owners and agents</li>
+              <li>Guidance during viewings</li>
+              <li>Rental contract checks</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏛️</div>
+            <h3>Official Registration</h3>
+            <ul>
+              <li>Municipality registration</li>
+              <li>Residence documents application</li>
+              <li>Address registration</li>
+              <li>Guide through administration</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">⚡</div>
+            <h3>Contracts & Utilities</h3>
+            <ul>
+              <li>Electricity, gas and water</li>
+              <li>Internet and telecom</li>
+              <li>Insurance (fire, liability)</li>
+              <li>All practical arrangements</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏥</div>
+            <h3>Health</h3>
+            <ul>
+              <li>Health insurance registration</li>
+              <li>GP registration</li>
+              <li>Explanation of Belgian healthcare</li>
+              <li>Help with pharmacy and specialists</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏦</div>
+            <h3>Financial</h3>
+            <ul>
+              <li>Opening a bank account</li>
+              <li>Explanation of payments and invoices</li>
+              <li>Administration management</li>
+              <li>Budget advice</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🗂️</div>
+            <h3>Admin & Support</h3>
+            <ul>
+              <li>Explanation of all documents and letters</li>
+              <li>Guidance at appointments</li>
+              <li>Translation and support</li>
+              <li>Personal follow-up</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newcomers-cta">
+          <a href="#contact" class="btn-primary btn-large">
+            <span>👉</span>
+            <span>I'm new – help me get started</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="diensten">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Services</div>
@@ -1886,19 +2290,19 @@
 
           <div class="service-card">
             <div class="service-icon">📄</div>
-            <div class="service-title">Administration</div>
-            <div class="service-sub">No more administrative hassle</div>
+            <div class="service-title">Administration & Appointments</div>
+            <div class="service-sub">No paperwork hassle</div>
             <p class="service-text">
-              We take care of documents, contracts, utilities, internet and official matters for you.
+              We take your administration and official appointments completely off your hands. No stress, no confusion.
             </p>
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📅</div>
-            <div class="service-title">Appointments</div>
-            <div class="service-sub">Guidance at official appointments</div>
+            <div class="service-icon">👥</div>
+            <div class="service-title">Senior Support</div>
+            <div class="service-sub">Personal help with respect</div>
             <p class="service-text">
-              We plan and accompany you to appointments with official institutions.
+              Patient guidance for seniors with all administration and appointments.
             </p>
           </div>
         </div>
@@ -1912,7 +2316,7 @@
       </div>
     </section>
 
-    <section id="woning-zoeken-en">
+    <section id="woning">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Housing search</div>
@@ -1932,6 +2336,7 @@
               <li><span>✔</span><div>Contact with agents and landlords</div></li>
               <li><span>✔</span><div>Organising viewings and appointments</div></li>
               <li><span>✔</span><div>Fast and targeted home search</div></li>
+              <li><span>✔</span><div>Rental contract checks</div></li>
             </ul>
             <p class="detail-strong">
               We work fully independently and protect your interests, avoiding unclear or risky contracts.
@@ -1952,78 +2357,52 @@
       </div>
     </section>
 
-    <section id="administratie-en">
+    <section id="admin">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Administration</div>
-          <h2 class="section-title">Administrative help without stress</h2>
+          <h2 class="section-title">Administration & Appointments</h2>
           <p class="section-subtitle">
-            We make sure everything is arranged correctly and clearly.
+            We take your administration and appointments completely off your hands. No stress, no confusion — we guide you step by step.
           </p>
         </div>
 
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Energy, gas and internet contracts</div></li>
-              <li><span>✔</span><div>Insurance and advice</div></li>
-              <li><span>✔</span><div>Municipality registration</div></li>
-              <li><span>✔</span><div>Explanation of letters and documents</div></li>
-              <li><span>✔</span><div>Opening a bank account</div></li>
-              <li><span>✔</span><div>GP registration</div></li>
+        <div class="admin-afspraken-grid">
+          <div class="admin-card">
+            <h3>📋 What we arrange for you:</h3>
+            <ul>
+              <li>Management and explanation of letters, documents and emails</li>
+              <li>Contact with government services and official institutions</li>
+              <li>Scheduling and organizing appointments</li>
+              <li>Preparation for appointments (what to say/do)</li>
+              <li>Personal guidance to appointments (with practical translation)</li>
+              <li>Aftercare: explanation of what was discussed and next steps</li>
             </ul>
           </div>
 
-          <div class="detail-box">
-            <p class="detail-text">
-              You don't have to figure everything out alone. We explain step by step what is needed,
-              what is important and what to avoid.
-            </p>
-            <p class="detail-strong">
-              One point of contact for all your practical questions – in clear language.
-            </p>
+          <div class="admin-card">
+            <h3>✨ Extra support:</h3>
+            <ul>
+              <li>Opening a bank account</li>
+              <li>GP registration</li>
+              <li>Insurance help (choice and subscription)</li>
+              <li>Energy contracts (electricity, gas, internet)</li>
+              <li>Municipality registration and documents</li>
+              <li>Telephone support for questions</li>
+            </ul>
           </div>
+        </div>
+
+        <div class="section-cta-center" style="margin-top: 2rem;">
+          <a href="#contact" class="btn-primary">
+            <span>👉</span>
+            <span>Start with administrative help</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="afspraken-en">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Official appointments</div>
-          <h2 class="section-title">Support at official appointments</h2>
-          <p class="section-subtitle">
-            We plan and guide your appointments without stress.
-          </p>
-        </div>
-
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Municipality</div></li>
-              <li><span>✔</span><div>Health services</div></li>
-              <li><span>✔</span><div>Insurance</div></li>
-              <li><span>✔</span><div>Government offices</div></li>
-            </ul>
-            <p class="detail-strong">
-              You are not alone. We guide you step by step.
-            </p>
-          </div>
-
-          <div class="detail-box">
-            <p class="detail-text">
-              We help you prepare documents, understand letters and ask the right questions during appointments.
-            </p>
-            <a href="#contact" class="btn-primary">
-              <span>👉</span>
-              <span>Plan your first call</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="senioren-en" class="senior-section">
+    <section id="senioren" class="senior-section">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Senior care & support</div>
@@ -2090,7 +2469,6 @@
       </div>
     </section>
 
-    <!-- CONTACT EN -->
     <section id="contact" class="contact-section">
       <div class="container contact-inner">
         <div>
@@ -2100,7 +2478,6 @@
             and what support you need in Belgium.
           </p>
 
-          <!-- SPECIALE SITUATIE BLOK EN -->
           <div class="contact-extra">
             <h3 class="contact-extra-title">Don't see your situation listed?</h3>
             <p class="contact-extra-text">
@@ -2111,19 +2488,21 @@
               <span>I have a special situation</span>
             </button>
           </div>
-<div class="contact-extra">
-  <h3 class="contact-extra-title">Direct contact?</h3>
-  <p class="contact-extra-text">
-    Prefer chatting directly? Send us a WhatsApp message!
-  </p>
-  <a href="https://wa.me/32480693350?text=Hello%20TIK-Assist!%20I%20have%20a%20question." 
-     class="btn-whatsapp" 
-     target="_blank"
-     style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
-    <span style="font-size: 1.3rem;">📱</span>
-    <span>Start WhatsApp chat</span>
-  </a>
-</div>
+
+          <div class="contact-extra">
+            <h3 class="contact-extra-title">Direct contact?</h3>
+            <p class="contact-extra-text">
+              Prefer chatting directly? Send us a WhatsApp message!
+            </p>
+            <a href="https://wa.me/32480693350?text=Hello%20TIK-Assist!%20I%20have%20a%20question." 
+               class="btn-primary" 
+               target="_blank"
+               style="background: #25d366; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
+              <span style="font-size: 1.3rem;">📱</span>
+              <span>Start WhatsApp chat</span>
+            </a>
+          </div>
+
           <div class="contact-info">
             <div><strong>Phone:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
             <div><strong>Email:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
@@ -2207,7 +2586,111 @@
       </div>
     </section>
 
-    <section id="diensten-fr">
+    <!-- LOCATION SHOWCASE FR -->
+    <section class="location-showcase">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Anvers la nuit - Cathédrale et Escaut" />
+        <div class="location-overlay">
+          <div class="location-content">
+            <h2>Votre guide à <span class="highlight">Anvers</span> & en Belgique</h2>
+            <p>De l'Escaut à la plus petite commune – nous connaissons le chemin et vous guidons personnellement.</p>
+          </div>
+        </div>
+        <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- NOUVEAU EN BELGIQUE -->
+    <section id="nieuw" class="newcomers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Nouveaux arrivants</div>
+          <h2 class="section-title">Nouveau en Belgique? Nous vous guidons de A à Z</h2>
+          <p class="section-subtitle">
+            Déménager en Belgique n'est pas simple. Nouvelles règles, barrière de la langue et beaucoup d'administration. 
+            Nous veillons à ce que vous arrangiez tout correctement, rapidement et sans stress.
+          </p>
+        </div>
+
+        <div class="newcomers-grid">
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏠</div>
+            <h3>Logement</h3>
+            <ul>
+              <li>Aide à la recherche d'un logement</li>
+              <li>Contact avec propriétaires et agents</li>
+              <li>Accompagnement lors des visites</li>
+              <li>Vérification des contrats de location</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏛️</div>
+            <h3>Enregistrement officiel</h3>
+            <ul>
+              <li>Inscription à la commune</li>
+              <li>Demande de documents de séjour</li>
+              <li>Enregistrement d'adresse</li>
+              <li>Guide à travers l'administration</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">⚡</div>
+            <h3>Contrats & services</h3>
+            <ul>
+              <li>Électricité, gaz et eau</li>
+              <li>Internet et télécom</li>
+              <li>Assurances (incendie, responsabilité)</li>
+              <li>Tous les arrangements pratiques</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏥</div>
+            <h3>Santé</h3>
+            <ul>
+              <li>Affiliation à une mutuelle</li>
+              <li>Inscription chez un médecin généraliste</li>
+              <li>Explication du système de santé belge</li>
+              <li>Aide avec pharmacie et spécialistes</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏦</div>
+            <h3>Financier</h3>
+            <ul>
+              <li>Ouverture d'un compte bancaire</li>
+              <li>Explication des paiements et factures</li>
+              <li>Gestion administrative</li>
+              <li>Conseil budgétaire</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🗂️</div>
+            <h3>Administration & soutien</h3>
+            <ul>
+              <li>Explication de tous les documents</li>
+              <li>Accompagnement aux rendez-vous</li>
+              <li>Traduction et soutien</li>
+              <li>Suivi personnel</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newcomers-cta">
+          <a href="#contact" class="btn-primary btn-large">
+            <span>👉</span>
+            <span>Je suis nouveau – aidez-moi à démarrer</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="diensten">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Services</div>
@@ -2227,19 +2710,19 @@
 
           <div class="service-card">
             <div class="service-icon">📄</div>
-            <div class="service-title">Administration</div>
-            <div class="service-sub">Fini les démarches compliquées</div>
+            <div class="service-title">Administration & Rendez-vous</div>
+            <div class="service-sub">Plus de tracas administratifs</div>
             <p class="service-text">
-              Nous gérons les documents, contrats, énergie, internet et autres démarches officielles.
+              Nous prenons en charge votre administration et rendez-vous officiels. Pas de stress, pas de confusion.
             </p>
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📅</div>
-            <div class="service-title">Rendez‑vous</div>
-            <div class="service-sub">Accompagnement lors des rendez‑vous officiels</div>
+            <div class="service-icon">👥</div>
+            <div class="service-title">Soutien aux seniors</div>
+            <div class="service-sub">Aide personnalisée avec respect</div>
             <p class="service-text">
-              Nous planifions et vous accompagnons à vos rendez‑vous avec les administrations.
+              Accompagnement patient pour les seniors avec toute l'administration et les rendez-vous.
             </p>
           </div>
         </div>
@@ -2253,7 +2736,7 @@
       </div>
     </section>
 
-    <section id="woning-zoeken-fr">
+    <section id="woning">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Logement</div>
@@ -2273,6 +2756,7 @@
               <li><span>✔</span><div>Contact avec agents et propriétaires</div></li>
               <li><span>✔</span><div>Organisation des visites</div></li>
               <li><span>✔</span><div>Recherche rapide et ciblée</div></li>
+              <li><span>✔</span><div>Vérification des contrats de location</div></li>
             </ul>
             <p class="detail-strong">
               Nous protégeons vos intérêts et évitons les contrats flous ou risqués.
@@ -2286,86 +2770,59 @@
             </p>
             <a href="#contact" class="btn-primary">
               <span>👉</span>
-              <span>Parlez‑nous de votre projet</span>
+              <span>Parlez-nous de votre projet</span>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="administratie-fr">
+    <section id="admin">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Administration</div>
-          <h2 class="section-title">Aide administrative sans stress</h2>
+          <h2 class="section-title">Administration & Rendez-vous</h2>
           <p class="section-subtitle">
-            Nous veillons à ce que tout soit réglé correctement et clairement.
+            Nous prenons en charge votre administration et rendez-vous complètement. Pas de stress, pas de confusion — nous vous guidons étape par étape.
           </p>
         </div>
 
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Contrats d'énergie, gaz et internet</div></li>
-              <li><span>✔</span><div>Assurances et conseils</div></li>
-              <li><span>✔</span><div>Inscription à la commune</div></li>
-              <li><span>✔</span><div>Explication des lettres et documents</div></li>
-              <li><span>✔</span><div>Ouverture de compte bancaire</div></li>
-              <li><span>✔</span><div>Inscription chez un médecin généraliste</div></li>
+        <div class="admin-afspraken-grid">
+          <div class="admin-card">
+            <h3>📋 Ce que nous gérons pour vous:</h3>
+            <ul>
+              <li>Gestion et explication des lettres, documents et e-mails</li>
+              <li>Contact avec les services gouvernementaux</li>
+              <li>Planification et organisation des rendez-vous</li>
+              <li>Préparation aux rendez-vous (que dire/faire)</li>
+              <li>Accompagnement personnel aux rendez-vous (avec traduction)</li>
+              <li>Suivi: explication de ce qui a été discuté et prochaines étapes</li>
             </ul>
           </div>
 
-          <div class="detail-box">
-            <p class="detail-text">
-              Vous n'avez pas besoin de tout comprendre seul. Nous vous expliquons chaque étape,
-              ce qui est important et ce qu'il vaut mieux éviter.
-            </p>
-            <p class="detail-strong">
-              Un seul interlocuteur pour toutes vos questions pratiques – dans une langue claire.
-            </p>
+          <div class="admin-card">
+            <h3>✨ Soutien supplémentaire:</h3>
+            <ul>
+              <li>Ouverture d'un compte bancaire</li>
+              <li>Inscription chez un médecin généraliste</li>
+              <li>Aide aux assurances (choix et souscription)</li>
+              <li>Contrats d'énergie (électricité, gaz, internet)</li>
+              <li>Inscription communale et documents</li>
+              <li>Support téléphonique pour questions</li>
+            </ul>
           </div>
+        </div>
+
+        <div class="section-cta-center" style="margin-top: 2rem;">
+          <a href="#contact" class="btn-primary">
+            <span>👉</span>
+            <span>Commencez avec l'aide administrative</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="afspraken-fr">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Rendez‑vous officiels</div>
-          <h2 class="section-title">Accompagnement aux rendez‑vous officiels</h2>
-          <p class="section-subtitle">
-            Nous planifions et accompagnons vos rendez‑vous sans stress.
-          </p>
-        </div>
-
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>Commune</div></li>
-              <li><span>✔</span><div>Services de santé</div></li>
-              <li><span>✔</span><div>Assurances</div></li>
-              <li><span>✔</span><div>Administrations publiques</div></li>
-            </ul>
-            <p class="detail-strong">
-              Vous n'êtes pas seul. Nous vous accompagnons à chaque étape.
-            </p>
-          </div>
-
-          <div class="detail-box">
-            <p class="detail-text">
-              Nous vous aidons à préparer les documents, comprendre les courriers
-              et poser les bonnes questions pendant les rendez‑vous.
-            </p>
-            <a href="#contact" class="btn-primary">
-              <span>👉</span>
-              <span>Planifiez un premier échange</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="senioren-fr" class="senior-section">
+    <section id="senioren" class="senior-section">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">Soutien aux seniors</div>
@@ -2432,7 +2889,6 @@
       </div>
     </section>
 
-    <!-- CONTACT FR -->
     <section id="contact" class="contact-section">
       <div class="container contact-inner">
         <div>
@@ -2442,7 +2898,6 @@
             et le soutien dont vous avez besoin en Belgique.
           </p>
 
-          <!-- SPECIALE SITUATIE BLOK FR -->
           <div class="contact-extra">
             <h3 class="contact-extra-title">Votre situation ne figure pas dans la liste?</h3>
             <p class="contact-extra-text">
@@ -2453,19 +2908,21 @@
               <span>J'ai une situation spéciale</span>
             </button>
           </div>
-<div class="contact-extra">
-  <h3 class="contact-extra-title">Contact direct ?</h3>
-  <p class="contact-extra-text">
-    Vous préférez discuter directement ? Envoyez-nous un message WhatsApp !
-  </p>
-  <a href="https://wa.me/32480693350?text=Bonjour%20TIK-Assist!%20J%20ai%20une%20question." 
-     class="btn-whatsapp" 
-     target="_blank"
-     style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
-    <span style="font-size: 1.3rem;">📱</span>
-    <span>Démarrer le chat WhatsApp</span>
-  </a>
-</div>
+
+          <div class="contact-extra">
+            <h3 class="contact-extra-title">Contact direct?</h3>
+            <p class="contact-extra-text">
+              Vous préférez discuter directement? Envoyez-nous un message WhatsApp!
+            </p>
+            <a href="https://wa.me/32480693350?text=Bonjour%20TIK-Assist!%20J%20ai%20une%20question." 
+               class="btn-primary" 
+               target="_blank"
+               style="background: #25d366; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
+              <span style="font-size: 1.3rem;">📱</span>
+              <span>Démarrer le chat WhatsApp</span>
+            </a>
+          </div>
+
           <div class="contact-info">
             <div><strong>Téléphone:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
             <div><strong>Email:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
@@ -2549,7 +3006,111 @@
       </div>
     </section>
 
-    <section id="diensten-ar">
+    <!-- LOCATION SHOWCASE AR -->
+    <section class="location-showcase">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="أنتويربن ليلاً - الكاتدرائية ونهر شيلد" />
+        <div class="location-overlay">
+          <div class="location-content">
+            <h2>دليلك في <span class="highlight">أنتويربن</span> وكل بلجيكا</h2>
+            <p>من نهر شيلد إلى أصغر بلدية – نعرف الطريق ونرافقك شخصياً.</p>
+          </div>
+        </div>
+        <div class="location-gold-line"></div>
+      </div>
+    </section>
+
+    <!-- جديد في بلجيكا -->
+    <section id="nieuw" class="newcomers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">الوافدون الجدد</div>
+          <h2 class="section-title">جديد في بلجيكا؟ نرافقك من الألف إلى الياء</h2>
+          <p class="section-subtitle">
+            الانتقال إلى بلجيكا ليس سهلاً. قواعد جديدة، حاجز اللغة، والكثير من الإدارة. 
+            نضمن لك ترتيب كل شيء بشكل صحيح وسريع وبدون توتر.
+          </p>
+        </div>
+
+        <div class="newcomers-grid">
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏠</div>
+            <h3>السكن</h3>
+            <ul>
+              <li>المساعدة في البحث عن منزل</li>
+              <li>التواصل مع المالكين والوسطاء</li>
+              <li>مرافقة خلال الزيارات</li>
+              <li>التحقق من عقود الإيجار</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏛️</div>
+            <h3>التسجيل الرسمي</h3>
+            <ul>
+              <li>التسجيل في البلدية</li>
+              <li>طلب وثائق الإقامة</li>
+              <li>تسجيل العنوان</li>
+              <li>الإرشاد عبر الإدارة</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">⚡</div>
+            <h3>العقود والخدمات</h3>
+            <ul>
+              <li>الكهرباء والغاز والماء</li>
+              <li>الإنترنت والاتصالات</li>
+              <li>التأمينات (حريق، مسؤولية)</li>
+              <li>كل الترتيبات العملية</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏥</div>
+            <h3>الصحة</h3>
+            <ul>
+              <li>الانضمام إلى صندوق المرضى</li>
+              <li>التسجيل عند طبيب العائلة</li>
+              <li>شرح النظام الصحي البلجيكي</li>
+              <li>المساعدة مع الصيدلية والمتخصصين</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🏦</div>
+            <h3>المالية</h3>
+            <ul>
+              <li>فتح حساب بنكي</li>
+              <li>شرح المدفوعات والفواتير</li>
+              <li>إدارة الإدارة والأوراق</li>
+              <li>نصائح الميزانية</li>
+            </ul>
+          </div>
+
+          <div class="newcomer-card">
+            <div class="newcomer-icon">🗂️</div>
+            <h3>الإدارة والدعم</h3>
+            <ul>
+              <li>شرح جميع المستندات والرسائل</li>
+              <li>مرافقة في المواعيد</li>
+              <li>الترجمة والدعم</li>
+              <li>المتابعة الشخصية</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newcomers-cta">
+          <a href="#contact" class="btn-primary btn-large">
+            <span>👉</span>
+            <span>أنا جديد – ساعدني في البدء</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="diensten">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">الخدمات</div>
@@ -2569,19 +3130,19 @@
 
           <div class="service-card">
             <div class="service-icon">📄</div>
-            <div class="service-title">الخدمات الإدارية</div>
-            <div class="service-sub">لا مزيد من التعقيدات الإدارية</div>
+            <div class="service-title">الإدارة والمواعيد</div>
+            <div class="service-sub">لا مزيد من تعقيدات الأوراق</div>
             <p class="service-text">
-              نتولى المستندات، العقود، الطاقة، الإنترنت، والجهات الرسمية نيابةً عنك.
+              نتولى إدارتك ومواعيدك الرسمية بالكامل. لا توتر، لا ارتباك.
             </p>
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📅</div>
-            <div class="service-title">المواعيد الرسمية</div>
-            <div class="service-sub">مرافقة في المواعيد مع الجهات الرسمية</div>
+            <div class="service-icon">👥</div>
+            <div class="service-title">دعم كبار السن</div>
+            <div class="service-sub">مساعدة شخصية باحترام</div>
             <p class="service-text">
-              نخطط مواعيدك ونرافقك إلى الجهات الرسمية خطوة بخطوة.
+              مرافقة صبورة لكبار السن في جميع الإجراءات الإدارية والمواعيد.
             </p>
           </div>
         </div>
@@ -2595,7 +3156,7 @@
       </div>
     </section>
 
-    <section id="woning-zoeken-ar">
+    <section id="woning">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">البحث عن منزل</div>
@@ -2615,6 +3176,7 @@
               <li><span>✔</span><div>التواصل مع الوكالات والمالكين</div></li>
               <li><span>✔</span><div>تنظيم المواعيد والمعاينات</div></li>
               <li><span>✔</span><div>بحث سريع ودقيق عن المنزل المناسب</div></li>
+              <li><span>✔</span><div>التحقق من عقود الإيجار</div></li>
             </ul>
             <p class="detail-strong">
               نعمل باستقلالية تامة ونحمي مصالحك، ونتجنب العقود غير الواضحة أو الخطرة.
@@ -2635,78 +3197,52 @@
       </div>
     </section>
 
-    <section id="administratie-ar">
+    <section id="admin">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">الخدمات الإدارية</div>
-          <h2 class="section-title">مساعدة إدارية بدون توتر</h2>
+          <h2 class="section-title">الإدارة والمواعيد</h2>
           <p class="section-subtitle">
-            نضمن أن كل شيء مُرتّب بشكل صحيح وواضح.
+            نتولى إدارتك ومواعيدك بالكامل. لا توتر، لا ارتباك — نرافقك خطوة بخطوة.
           </p>
         </div>
 
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>عقود الكهرباء والغاز والإنترنت</div></li>
-              <li><span>✔</span><div>التأمينات والنصائح</div></li>
-              <li><span>✔</span><div>التسجيل في البلدية</div></li>
-              <li><span>✔</span><div>شرح الرسائل والمستندات</div></li>
-              <li><span>✔</span><div>فتح حساب بنكي</div></li>
-              <li><span>✔</span><div>التسجيل عند طبيب العائلة</div></li>
+        <div class="admin-afspraken-grid">
+          <div class="admin-card">
+            <h3>📋 ما نرتبه لك:</h3>
+            <ul>
+              <li>إدارة وشرح الرسائل والمستندات والبريد الإلكتروني</li>
+              <li>التواصل مع الخدمات الحكومية والجهات الرسمية</li>
+              <li>جدولة وتنظيم المواعيد</li>
+              <li>التحضير للمواعيد (ماذا تقول/تفعل)</li>
+              <li>مرافقة شخصية للمواعيد (مع ترجمة عملية)</li>
+              <li>المتابعة: شرح ما تمت مناقشته والخطوات التالية</li>
             </ul>
           </div>
 
-          <div class="detail-box">
-            <p class="detail-text">
-              لست مضطرًا لفهم كل شيء وحدك. نشرح لك خطوة بخطوة ما هو مطلوب،
-              وما هو مهم، وما يجب تجنّبه.
-            </p>
-            <p class="detail-strong">
-              جهة واحدة لكل أسئلتك العملية – بلغة واضحة ومفهومة.
-            </p>
+          <div class="admin-card">
+            <h3>✨ دعم إضافي:</h3>
+            <ul>
+              <li>فتح حساب بنكي</li>
+              <li>التسجيل عند طبيب العائلة</li>
+              <li>المساعدة في التأمينات (الاختيار والاشتراك)</li>
+              <li>عقود الطاقة (كهرباء، غاز، إنترنت)</li>
+              <li>التسجيل في البلدية والمستندات</li>
+              <li>الدعم الهاتفي للاستفسارات</li>
+            </ul>
           </div>
+        </div>
+
+        <div class="section-cta-center" style="margin-top: 2rem;">
+          <a href="#contact" class="btn-primary">
+            <span>👉</span>
+            <span>ابدأ بالمساعدة الإدارية</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="afspraken-ar">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">المواعيد الرسمية</div>
-          <h2 class="section-title">مرافقة في المواعيد الرسمية</h2>
-          <p class="section-subtitle">
-            نخطط مواعيدك ونرافقك بدون توتر.
-          </p>
-        </div>
-
-        <div class="detail-section">
-          <div class="detail-box">
-            <ul class="detail-list">
-              <li><span>✔</span><div>البلدية</div></li>
-              <li><span>✔</span><div>الخدمات الصحية</div></li>
-              <li><span>✔</span><div>التأمينات</div></li>
-              <li><span>✔</span><div>الجهات الحكومية</div></li>
-            </ul>
-            <p class="detail-strong">
-              لن تكون وحدك. نرافقك خطوة بخطوة.
-            </p>
-          </div>
-
-          <div class="detail-box">
-            <p class="detail-text">
-              نساعدك في تجهيز المستندات، وفهم الرسائل، وطرح الأسئلة الصحيحة أثناء المواعيد.
-            </p>
-            <a href="#contact" class="btn-primary">
-              <span>👉</span>
-              <span>احجز مكالمتك الأولى</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="senioren-ar" class="senior-section">
+    <section id="senioren" class="senior-section">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">دعم كبار السن</div>
@@ -2773,7 +3309,6 @@
       </div>
     </section>
 
-    <!-- CONTACT AR -->
     <section id="contact" class="contact-section">
       <div class="container contact-inner">
         <div>
@@ -2782,7 +3317,6 @@
             اترك بياناتك وسنتصل بك قريبًا. سنراجع معًا وضعك والدعم الذي تحتاجه في بلجيكا.
           </p>
 
-          <!-- SPECIALE SITUATIE BLOK AR -->
           <div class="contact-extra">
             <h3 class="contact-extra-title">لا تجد وضعك في القائمة؟</h3>
             <p class="contact-extra-text">
@@ -2793,19 +3327,21 @@
               <span>لدي حالة خاصة</span>
             </button>
           </div>
-     <div class="contact-extra lang-block rtl" data-lang-block="ar">
-  <h3 class="contact-extra-title">تواصل مباشر؟</h3>
-  <p class="contact-extra-text">
-    تفضل التواصل مباشرة؟ أرسل لنا رسالة عبر واتساب!
-  </p>
-  <a href="https://wa.me/32480693350?text=مرحبا%20لدي%20سؤال" 
-     class="btn-whatsapp" 
-     target="_blank"
-     style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
-    <span style="font-size: 1.3rem;">📱</span>
-    <span>ابدأ محادثة واتساب</span>
-  </a>
-</div>
+
+          <div class="contact-extra">
+            <h3 class="contact-extra-title">تواصل مباشر؟</h3>
+            <p class="contact-extra-text">
+              تفضل التواصل مباشرة؟ أرسل لنا رسالة عبر واتساب!
+            </p>
+            <a href="https://wa.me/32480693350?text=مرحبا%20TIK-Assist%20لدي%20سؤال" 
+               class="btn-primary" 
+               target="_blank"
+               style="background: #25d366; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);">
+              <span style="font-size: 1.3rem;">📱</span>
+              <span>ابدأ محادثة واتساب</span>
+            </a>
+          </div>
+
           <div class="contact-info">
             <div><strong>الهاتف:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
             <div><strong>البريد:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
@@ -2921,10 +3457,20 @@
         fr: 'votre guide en Belgique',
         ar: 'دليلك في بلجيكا'
       };
-      finalTypeEl.textContent = slogans[lang];
       
-      // Reset typewriter effect for new language
-      if (lang === 'ar') {
+      // Typewriter effect reset for new language
+      if (lang !== 'ar') {
+        finalTypeEl.textContent = '';
+        let i = 0;
+        const type = () => {
+          if (i < slogans[lang].length) {
+            finalTypeEl.textContent += slogans[lang].charAt(i);
+            i++;
+            setTimeout(type, 80);
+          }
+        };
+        setTimeout(type, 100);
+      } else {
         finalTypeEl.textContent = slogans[ar];
       }
 
@@ -3043,7 +3589,6 @@
     const modal = document.getElementById('specialModal');
     const texts = modalTexts[lang];
     
-    // Update teksten
     document.getElementById('modalTitleText').textContent = texts.title;
     document.getElementById('modalSubtitleText').textContent = texts.subtitle;
     document.getElementById('labelName').textContent = texts.name;
@@ -3052,7 +3597,6 @@
     document.getElementById('labelCat').textContent = texts.cat;
     document.getElementById('labelMessage').textContent = texts.message;
     
-    // Update options
     document.getElementById('optionDefault').textContent = texts.default;
     document.getElementById('optionWoning').textContent = texts.woning;
     document.getElementById('optionAdmin').textContent = texts.admin;
@@ -3061,7 +3605,6 @@
     document.getElementById('optionWerk').textContent = texts.werk;
     document.getElementById('optionOverig').textContent = texts.overig;
     
-    // Update submit button
     const submitBtn = document.getElementById('submitBtn');
     submitBtn.innerHTML = `<span>🚀</span><span>${texts.submit}</span>`;
     
@@ -3074,12 +3617,10 @@
     document.body.style.overflow = '';
   }
 
-  // Sluit modal als je buiten klikt
   document.getElementById('specialModal').addEventListener('click', function(e) {
     if (e.target === this) closeSpecialModal();
   });
 
-  // ESC toets sluit modal
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeSpecialModal();
   });
