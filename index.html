@@ -744,7 +744,7 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 2.5rem;
       align-items: center;
     }
@@ -864,85 +864,92 @@
       color: var(--text-soft);
     }
 
-    /* ===== LOCATION SHOWCASE MET FOTO ===== */
+    /* ===== LOCATION SHOWCASE (ANTWERPEN FOTO) ===== */
     .location-showcase {
       width: 100%;
-      background: var(--bg);
-      padding: 4rem 0;
-      border-top: 1px solid rgba(242, 201, 76, 0.1);
-      border-bottom: 1px solid rgba(242, 201, 76, 0.1);
-    }
-
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .location-text h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .location-text .highlight {
-      color: var(--primary);
-      text-shadow: 0 0 30px rgba(242, 201, 76, 0.4);
-    }
-
-    .location-text p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .location-image-box {
       position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(242, 201, 76, 0.2);
-      transform: perspective(1000px) rotateY(-5deg);
-      transition: transform 0.4s ease;
+      margin: 0;
     }
 
-    .location-image-box:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
-
-    .location-image-box img {
+    .location-image-wrap {
+      position: relative;
       width: 100%;
-      height: 350px;
-      object-fit: cover;
-      display: block;
+      height: 500px;
+      overflow: hidden;
     }
 
-    .location-image-overlay {
+    .location-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.6) contrast(1.1);
+    }
+
+    .location-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 11, 13, 0.3) 0%,
+        rgba(11, 11, 13, 0.7) 70%,
+        rgba(11, 11, 13, 0.95) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .location-content h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .location-content .highlight {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(242, 201, 76, 0.6);
+    }
+
+    .location-content p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .location-gold-line {
       position: absolute;
       bottom: 0;
       left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(11,11,13,0.9), transparent);
-      padding: 2rem 1.5rem 1.5rem;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary) 30%, 
+        var(--primary) 70%, 
+        transparent 100%
+      );
+      box-shadow: 0 0 20px rgba(242, 201, 76, 0.6);
     }
 
-    @media (max-width: 900px) {
-      .location-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    @media (max-width: 768px) {
+      .location-image-wrap {
+        height: 400px;
       }
-      .location-text h2 {
-        font-size: 1.8rem;
+      .location-content h2 {
+        font-size: 2rem;
       }
-      .location-image-box {
-        transform: none;
-        max-width: 500px;
-        margin: 0 auto;
+      .location-content p {
+        font-size: 1rem;
+        padding: 0 1rem;
       }
     }
 
@@ -1270,51 +1277,39 @@
       color: #c8c8cf;
     }
 
-    /* CONTACT - BUITEN LANG BLOCKS */
+    /* CONTACT */
     .contact-section {
       background: #08080a;
-      padding: 4rem 0;
-      border-top: 2px solid rgba(242, 201, 76, 0.2);
+      padding: 3rem 0 3.5rem;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr));
+      gap: 2rem;
+      align-items: flex-start;
     }
 
     .contact-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.6rem;
-      text-align: center;
     }
 
     .contact-text {
-      font-size: 1rem;
-      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
       color: var(--text-soft);
-      text-align: center;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .contact-info-box h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .contact-info-box p {
+    .contact-info {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 0.5rem;
     }
 
-    .contact-info-box strong {
-      color: var(--text-main);
+    .contact-info strong {
+      color: var(--primary);
     }
 
     /* SPECIALE SITUATIE BLOK */
@@ -1497,7 +1492,7 @@
     @media (max-width: 900px) {
       .hero-inner,
       .detail-section,
-      .contact-grid,
+      .contact-inner,
       .senior-grid,
       .admin-afspraken-grid,
       .newcomers-grid {
@@ -1529,6 +1524,10 @@
       .modal-content {
         margin: 1rem;
         max-height: 95vh;
+      }
+
+      .location-content h2 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -1642,6 +1641,7 @@
             </div>
             <div class="final-side final-side-gold"></div>
             <div class="final-top final-top-gold"></div>
+            <!-- Dubbele ring animatie -->
             <div class="final-ring final-ring-outer"></div>
             <div class="final-ring final-ring-inner"></div>
           </div>
@@ -1657,6 +1657,7 @@
           </div>
         </div>
         
+        <!-- Lijn animatie - verbindt de 3 blocks -->
         <div class="final-line-container">
           <div class="final-line-track">
             <div class="final-line-glow"></div>
@@ -1664,6 +1665,7 @@
           </div>
         </div>
         
+        <!-- Slogan -->
         <div class="final-slogan">
           <span id="finalType">jouw gids in België</span>
           <span class="final-cursor">|</span>
@@ -1737,20 +1739,18 @@
       </div>
     </section>
 
-    <!-- LOCATION SHOWCASE MET FOTO -->
+    <!-- LOCATION SHOWCASE (ANTWERPEN FOTO) -->
     <section class="location-showcase">
-      <div class="container">
-        <div class="location-grid">
-          <div class="location-text">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Antwerpen by night - Kathedraal en Schelde" />
+        <div class="location-overlay">
+          <div class="location-content">
             <h2>Jouw gids in <span class="highlight">Antwerpen</span> & heel België</h2>
-            <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk bij elke stap.</p>
-          </div>
-          <div class="location-image-box">
-            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
-                 alt="Antwerpen Kathedraal" />
-            <div class="location-image-overlay">ONZE-LIEVE-VROUWEKATHEDRAAL</div>
+            <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk.</p>
           </div>
         </div>
+        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -2168,18 +2168,16 @@
 
     <!-- LOCATION SHOWCASE EN -->
     <section class="location-showcase">
-      <div class="container">
-        <div class="location-grid">
-          <div class="location-text">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Antwerp by night - Cathedral and Scheldt" />
+        <div class="location-overlay">
+          <div class="location-content">
             <h2>Your guide in <span class="highlight">Antwerp</span> & all of Belgium</h2>
             <p>From the Scheldt river to the smallest municipality – we know the way and guide you personally.</p>
           </div>
-          <div class="location-image-box">
-            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
-                 alt="Antwerp Cathedral" />
-            <div class="location-image-overlay">CATHEDRAL OF OUR LADY</div>
-          </div>
         </div>
+        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -2590,18 +2588,16 @@
 
     <!-- LOCATION SHOWCASE FR -->
     <section class="location-showcase">
-      <div class="container">
-        <div class="location-grid">
-          <div class="location-text">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="Anvers la nuit - Cathédrale et Escaut" />
+        <div class="location-overlay">
+          <div class="location-content">
             <h2>Votre guide à <span class="highlight">Anvers</span> & en Belgique</h2>
             <p>De l'Escaut à la plus petite commune – nous connaissons le chemin et vous guidons personnellement.</p>
           </div>
-          <div class="location-image-box">
-            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
-                 alt="Cathédrale d'Anvers" />
-            <div class="location-image-overlay">CATHÉDRALE NOTRE-DAME</div>
-          </div>
         </div>
+        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -3012,18 +3008,16 @@
 
     <!-- LOCATION SHOWCASE AR -->
     <section class="location-showcase">
-      <div class="container">
-        <div class="location-grid">
-          <div class="location-text">
+      <div class="location-image-wrap">
+        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
+             alt="أنتويربن ليلاً - الكاتدرائية ونهر شيلد" />
+        <div class="location-overlay">
+          <div class="location-content">
             <h2>دليلك في <span class="highlight">أنتويربن</span> وكل بلجيكا</h2>
             <p>من نهر شيلد إلى أصغر بلدية – نعرف الطريق ونرافقك شخصياً.</p>
           </div>
-          <div class="location-image-box">
-            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
-                 alt="كاتدرائية أنتويربن" />
-            <div class="location-image-overlay">كاتدرائية السيدة العذراء</div>
-          </div>
         </div>
+        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -3433,38 +3427,6 @@
       menu.style.display = 'none';
     }
   });
-
-  // Navigation links per language
-  const navLinks = {
-    nl: ['Nieuw in België', 'Diensten', 'Woning', 'Administratie', 'Senioren', 'Contact'],
-    en: ['New in Belgium', 'Services', 'Housing', 'Administration', 'Seniors', 'Contact'],
-    fr: ['Nouveau en Belgique', 'Services', 'Logement', 'Administration', 'Seniors', 'Contact'],
-    ar: ['جديد في بلجيكا', 'الخدمات', 'السكن', 'الإدارة', 'كبار السن', 'تواصل']
-  };
-
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      const lang = option.getAttribute('data-lang');
-
-      options.forEach(o => o.classList.remove('active'));
-      option.classList.add('active');
-
-      langBlocks.forEach(block => {
-        block.classList.toggle('active', block.dataset.langBlock === lang);
-      });
-
-      document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
-
-      // Update navigation links
-      const navElements = document.querySelectorAll('.nav-links a');
-      const currentNav = navLinks[lang];
-      navElements.forEach((el, index) => {
-        if (currentNav[index]) {
-          el.textContent = currentNav[index];
-        }
-      });
-
-     
 
   options.forEach(option => {
     option.addEventListener('click', () => {
