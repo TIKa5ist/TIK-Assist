@@ -1746,7 +1746,7 @@
             <p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk bij elke stap.</p>
           </div>
           <div class="location-image-box">
-            <img src="https://images.unsplash.com/photo-1516571137133-19eb78b43e0c?w=800&q=80" 
+            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
                  alt="Antwerpen Kathedraal" />
             <div class="location-image-overlay">ONZE-LIEVE-VROUWEKATHEDRAAL</div>
           </div>
@@ -2168,16 +2168,18 @@
 
     <!-- LOCATION SHOWCASE EN -->
     <section class="location-showcase">
-      <div class="location-image-wrap">
-        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
-             alt="Antwerp by night - Cathedral and Scheldt" />
-        <div class="location-overlay">
-          <div class="location-content">
+      <div class="container">
+        <div class="location-grid">
+          <div class="location-text">
             <h2>Your guide in <span class="highlight">Antwerp</span> & all of Belgium</h2>
             <p>From the Scheldt river to the smallest municipality – we know the way and guide you personally.</p>
           </div>
+          <div class="location-image-box">
+            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
+                 alt="Antwerp Cathedral" />
+            <div class="location-image-overlay">CATHEDRAL OF OUR LADY</div>
+          </div>
         </div>
-        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -2588,16 +2590,18 @@
 
     <!-- LOCATION SHOWCASE FR -->
     <section class="location-showcase">
-      <div class="location-image-wrap">
-        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
-             alt="Anvers la nuit - Cathédrale et Escaut" />
-        <div class="location-overlay">
-          <div class="location-content">
+      <div class="container">
+        <div class="location-grid">
+          <div class="location-text">
             <h2>Votre guide à <span class="highlight">Anvers</span> & en Belgique</h2>
             <p>De l'Escaut à la plus petite commune – nous connaissons le chemin et vous guidons personnellement.</p>
           </div>
+          <div class="location-image-box">
+            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
+                 alt="Cathédrale d'Anvers" />
+            <div class="location-image-overlay">CATHÉDRALE NOTRE-DAME</div>
+          </div>
         </div>
-        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -3008,16 +3012,18 @@
 
     <!-- LOCATION SHOWCASE AR -->
     <section class="location-showcase">
-      <div class="location-image-wrap">
-        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/bb31aa0bcd77916de87aec14a8130017edb5b675.jpg" 
-             alt="أنتويربن ليلاً - الكاتدرائية ونهر شيلد" />
-        <div class="location-overlay">
-          <div class="location-content">
+      <div class="container">
+        <div class="location-grid">
+          <div class="location-text">
             <h2>دليلك في <span class="highlight">أنتويربن</span> وكل بلجيكا</h2>
             <p>من نهر شيلد إلى أصغر بلدية – نعرف الطريق ونرافقك شخصياً.</p>
           </div>
+          <div class="location-image-box">
+            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/3bede3badccc038eca831e437451981f7bccd15a.jpg" 
+                 alt="كاتدرائية أنتويربن" />
+            <div class="location-image-overlay">كاتدرائية السيدة العذراء</div>
+          </div>
         </div>
-        <div class="location-gold-line"></div>
       </div>
     </section>
 
@@ -3427,6 +3433,38 @@
       menu.style.display = 'none';
     }
   });
+
+  // Navigation links per language
+  const navLinks = {
+    nl: ['Nieuw in België', 'Diensten', 'Woning', 'Administratie', 'Senioren', 'Contact'],
+    en: ['New in Belgium', 'Services', 'Housing', 'Administration', 'Seniors', 'Contact'],
+    fr: ['Nouveau en Belgique', 'Services', 'Logement', 'Administration', 'Seniors', 'Contact'],
+    ar: ['جديد في بلجيكا', 'الخدمات', 'السكن', 'الإدارة', 'كبار السن', 'تواصل']
+  };
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const lang = option.getAttribute('data-lang');
+
+      options.forEach(o => o.classList.remove('active'));
+      option.classList.add('active');
+
+      langBlocks.forEach(block => {
+        block.classList.toggle('active', block.dataset.langBlock === lang);
+      });
+
+      document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
+
+      // Update navigation links
+      const navElements = document.querySelectorAll('.nav-links a');
+      const currentNav = navLinks[lang];
+      navElements.forEach((el, index) => {
+        if (currentNav[index]) {
+          el.textContent = currentNav[index];
+        }
+      });
+
+     
 
   options.forEach(option => {
     option.addEventListener('click', () => {
