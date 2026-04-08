@@ -1600,20 +1600,22 @@
       }
 
       .nav-toggle {
-        display: inline-flex;
+        display: none;
       }
 
       .nav-links {
-        display: none;
+        display: flex;
         width: 100%;
-        flex-direction: column;
-        gap: 0.2rem;
-        padding: 0.6rem;
-        margin-top: 0.25rem;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(15, 15, 22, 0.98);
-        box-shadow: 0 22px 50px rgba(0,0,0,0.55);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 0.35rem 0 0;
+        margin-top: 0.1rem;
+        border-radius: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
       }
 
       .nav-links.open {
@@ -1621,27 +1623,27 @@
       }
 
       .nav-links a {
-        width: 100%;
-        padding: 0.95rem 0.85rem;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid transparent;
+        width: auto;
+        padding: 0.55rem 0.35rem;
+        border-radius: 0;
+        background: transparent;
+        border: none;
       }
 
       .nav-links a:hover,
       .nav-links a.active-nav {
-        background: rgba(242,201,76,0.08);
-        border-color: rgba(242,201,76,0.16);
+        background: transparent;
+        border-color: transparent;
       }
 
       .nav-links a::after {
-        display: none;
+        display: block;
       }
 
       .lang-floating {
         right: 12px;
-        top: auto;
-        bottom: 14px;
+        top: 12px;
+        bottom: auto;
       }
 
       .hero-title {
@@ -2104,11 +2106,6 @@
 
 </div>
 </div>
-<button aria-expanded="false" aria-label="Open menu" class="nav-toggle" id="navToggle" type="button">
-<span class="nav-toggle-line"></span>
-<span class="nav-toggle-line"></span>
-<span class="nav-toggle-line"></span>
-</button>
 <nav class="nav-links" id="mainNav">
 <a class="nav-nieuw" data-section="nieuw" href="#">Nieuw in België</a>
 <a class="nav-diensten" data-section="diensten" href="#">Diensten</a>
