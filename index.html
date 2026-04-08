@@ -422,6 +422,51 @@
       width: 100%;
     }
 
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-main);
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .nav-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(242, 201, 76, 0.35);
+    }
+
+    .nav-toggle-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-open .nav-toggle-line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-open .nav-toggle-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-open .nav-toggle-line:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
     /* MODERN FLOATING LANGUAGE SWITCHER */
     .lang-floating {
       position: fixed;
@@ -981,8 +1026,17 @@
     /* SERVICES GRID */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    @media (min-width: 980px) {
+      .services-grid .service-card:last-child:nth-child(4) {
+        grid-column: 2;
+      }
     }
 
     .service-card {
@@ -992,6 +1046,8 @@
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
       border: 1px solid var(--border);
       transition: transform 0.2s ease;
+      cursor: pointer;
+      height: 100%;
     }
 
     .service-card:hover {
@@ -1497,12 +1553,23 @@
     }
 
     @media (max-width: 900px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero,
+      section {
+        padding-top: 2.35rem;
+        padding-bottom: 2.35rem;
+      }
+
       .hero-inner,
       .detail-section,
       .contact-grid,
       .senior-grid,
       .admin-afspraken-grid,
-      .newcomers-grid {
+      .newcomers-grid,
+      .location-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1511,17 +1578,126 @@
       }
 
       .nav {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .logo-wrap {
+        flex: 1 1 auto;
+        min-width: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .logo-final {
+        gap: 0.55rem;
+      }
+
+      .final-slogan {
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
         flex-direction: column;
-        align-items: flex-start;
+        gap: 0.2rem;
+        padding: 0.6rem;
+        margin-top: 0.25rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15, 15, 22, 0.98);
+        box-shadow: 0 22px 50px rgba(0,0,0,0.55);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 0.95rem 0.85rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid transparent;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active-nav {
+        background: rgba(242,201,76,0.08);
+        border-color: rgba(242,201,76,0.16);
+      }
+
+      .nav-links a::after {
+        display: none;
       }
 
       .lang-floating {
-        right: 10px;
-        top: 10px;
+        right: 12px;
+        top: auto;
+        bottom: 14px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle,
+      .hero-line,
+      .hero-strong,
+      .hero-contact-mini {
+        font-size: 0.98rem;
+      }
+
+      .hero-card,
+      .detail-box,
+      .service-card,
+      .admin-card,
+      .senior-block,
+      .contact-box,
+      .modal-content {
+        padding: 1.15rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .btn-special,
+      .btn-special-modal {
+        justify-content: center;
+        width: 100%;
       }
 
       .services-grid {
         grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      .section-title {
+        font-size: 1.45rem;
+      }
+
+      .location-image-box {
+        transform: none;
+        width: 100%;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        max-width: none;
       }
 
       .intro-letters { 
@@ -1531,6 +1707,48 @@
       .modal-content {
         margin: 1rem;
         max-height: 95vh;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 0.85rem;
+      }
+
+      header {
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+      }
+
+      .hero {
+        padding-top: 1.8rem;
+      }
+
+      .hero-title {
+        font-size: 1.72rem;
+      }
+
+      .hero-badge,
+      .welcome-animated {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .section-header {
+        margin-bottom: 1.35rem;
+      }
+
+      .section-title {
+        font-size: 1.32rem;
+      }
+
+      .location-text h2 {
+        font-size: 1.5rem;
+      }
+
+      .intro-skip {
+        padding: 0.75rem 1rem;
       }
     }
   
@@ -1737,6 +1955,32 @@
       }
     }
 
+
+
+/* v7 custom improvements */
+.hero-cta { align-items: flex-start; }
+.hero-cta-stack { display:flex; flex-direction:column; gap:0.9rem; }
+.btn-whatsapp { background:#25d366 !important; box-shadow:0 10px 30px rgba(37,211,102,.28); }
+.btn-whatsapp:hover { transform: translateY(-2px); }
+.hero-contact-mini { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-top:.35rem; }
+.hero-contact-item { display:flex; align-items:center; gap:.65rem; color:var(--text-soft); background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.08); padding:.72rem .95rem; border-radius:999px; }
+.hero-contact-icon { width:38px; height:38px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; background:rgba(242,201,76,.12); border:1px solid rgba(242,201,76,.25); font-size:1rem; flex-shrink:0; }
+.hero-contact-item a { color:var(--text-main); text-decoration:none; }
+.quick-help-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1.5rem; }
+.quick-help-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:1rem; backdrop-filter: blur(10px); box-shadow:0 12px 35px rgba(0,0,0,.22); }
+.quick-help-top { display:flex; align-items:center; gap:.7rem; margin-bottom:.55rem; }
+.quick-help-icon { width:42px; height:42px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(242,201,76,.22), rgba(255,255,255,.06)); font-size:1.15rem; }
+.quick-help-card h3 { margin:0; font-size:1rem; }
+.quick-help-card p { margin:0; color:var(--text-soft); font-size:.94rem; line-height:1.5; }
+.contact-bottom-info { margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.contact-bottom-info div { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:1rem 1.1rem; text-align:center; }
+.contact-bottom-info a { color:var(--text-main); text-decoration:none; }
+@media (max-width: 900px) { .contact-bottom-info { grid-template-columns:1fr; } }
+@media (max-width: 768px) {
+  .hero-cta { align-items:stretch; }
+  .hero-cta-stack .btn-primary { width:100%; justify-content:center; }
+  .quick-help-grid { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
@@ -1863,7 +2107,12 @@
 </div>
 </div>
 </div>
-<nav class="nav-links">
+<button aria-expanded="false" aria-label="Open menu" class="nav-toggle" id="navToggle" type="button">
+<span class="nav-toggle-line"></span>
+<span class="nav-toggle-line"></span>
+<span class="nav-toggle-line"></span>
+</button>
+<nav class="nav-links" id="mainNav">
 <a class="nav-nieuw" data-section="nieuw" href="#">Nieuw in België</a>
 <a class="nav-diensten" data-section="diensten" href="#">Diensten</a>
 <a class="nav-woning" data-section="woning" href="#">Woning</a>
@@ -1898,16 +2147,10 @@
 <p class="hero-subtitle">Wij helpen je met wonen, administratie en afspraken in België.</p>
 <p class="hero-line">Van het zoeken van een woning tot officiële afspraken – jij hoeft het niet alleen te doen.</p>
 <p class="hero-strong">Jouw rust is geen luxe, maar een recht.</p>
-<div class="hero-cta">
-<a class="btn-primary" href="#contact-nl">
+<div class="hero-cta"><div class="hero-cta-stack"><a class="btn-primary" href="#contact-nl">
 <span>👉</span>
 <span>Start je gratis gesprek</span>
-</a>
-<div class="hero-contact-mini">
-              Bel ons rechtstreeks: <strong>0480 69 33 50</strong><br/>
-              Of mail: <strong>info@tik.support</strong>
-</div>
-</div>
+</a><a class="btn-primary btn-whatsapp" href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." target="_blank"><span>💬</span><span>Chat meteen via WhatsApp</span></a></div><div class="hero-contact-mini"><div class="hero-contact-item"><span class="hero-contact-icon">📞</span><div><a href="tel:+32480693350">0480 69 33 50</a></div></div><div class="hero-contact-item"><span class="hero-contact-icon">✉️</span><div><a href="mailto:info@tik.support">info@tik.support</a></div></div></div></div>
 </div>
 <aside class="hero-card">
 <div class="hero-card-title">TIK – jouw gids in België</div>
@@ -1926,13 +2169,10 @@
 <section class="location-showcase">
 <div class="container">
 <div class="location-grid">
-<div class="location-text">
-<h2>Jouw gids in <span class="highlight">Antwerpen</span> &amp; heel België</h2>
-<p>Van de Schelde tot de kleinste gemeente – wij kennen de weg en begeleiden je persoonlijk bij elke stap.</p>
-</div>
+<div class="location-text"><h2>Hoe wij jou helpen</h2><p>Vier duidelijke domeinen waarin wij je begeleiden, zodat je sneller vooruitgaat en minder fouten maakt.</p><div class="quick-help-grid"><a class="quick-help-card" href="#woning-nl"><div class="quick-help-top"><span class="quick-help-icon">🏠</span><h3>Woning</h3></div><p>Hulp bij zoeken, afspraken en huurcontracten</p></a><a class="quick-help-card" href="#admin-nl"><div class="quick-help-top"><span class="quick-help-icon">📄</span><h3>Administratie</h3></div><p>Brieven, documenten en officiële afspraken helder geregeld</p></a><a class="quick-help-card" href="#senioren-nl"><div class="quick-help-top"><span class="quick-help-icon">👥</span><h3>Senioren</h3></div><p>Rustige en persoonlijke ondersteuning met respect en geduld</p></a><a class="quick-help-card" href="#nieuw-nl"><div class="quick-help-top"><span class="quick-help-icon">🆕</span><h3>Nieuwkomers</h3></div><p>Praktische hulp om goed te starten in België</p></a></div></div>
 <div class="location-image-box">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Antwerpen skyline" loading="eager" decoding="sync" />
-          </div>
+<img alt="Antwerpen skyline" decoding="sync" loading="eager" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4="/>
+</div>
 </div>
 </div>
 </section>
@@ -2050,7 +2290,7 @@
               Geduldige begeleiding voor senioren bij alle administratie en afspraken.
             </p>
 </div>
-</div>
+<div class="service-card"><div class="service-icon">🆕</div><div class="service-title">Nieuwkomers in België</div><div class="service-sub">Een sterke start zonder verwarring</div><p class="service-text">Wij helpen nieuwkomers met eerste stappen, praktische regelingen en duidelijke begeleiding.</p></div></div>
 <div class="section-cta-center">
 <a class="btn-primary" href="#contact-nl">
 <span>👉</span>
@@ -2147,9 +2387,7 @@
 <div class="section-header">
 <div class="section-kicker">Zorg &amp; ondersteuning</div>
 <h2 class="section-title">Zorg en ondersteuning voor senioren in België</h2>
-<p class="section-subtitle">
-            Gallifortlei 142, 2100 Antwerpen
-          </p>
+
 </div>
 <div class="senior-grid">
 <div class="senior-block">
@@ -2171,31 +2409,7 @@
               Geen stress, geen verwarring — alleen hulp waarop je kunt vertrouwen.
             </p>
 </div>
-<div class="senior-block offer-block">
-<h3 class="senior-offer-title">Speciaal aanbod voor senioren</h3>
-<p class="senior-text">
-              Een eenvoudige en betaalbare oplossing voor doorlopende ondersteuning.
-            </p>
-<div class="senior-price">
-              👉 Vanaf <strong>€100 per jaar</strong>
-</div>
-<ul class="detail-list">
-<li><span>✔</span><div>Hulp bij brieven en administratie</div></li>
-<li><span>✔</span><div>Ondersteuning bij vragen en communicatie</div></li>
-<li><span>✔</span><div>Snelle reactie bij problemen</div></li>
-<li><span>✔</span><div>Persoonlijk contact wanneer nodig</div></li>
-</ul>
-<p class="detail-strong">
-              Zo voorkomt u fouten, bespaart u tijd en heeft u altijd iemand die u kan helpen.
-            </p>
-<a class="btn-primary senior-btn" href="#contact-nl">
-<span>👉</span>
-<span>Start vandaag met ondersteuning</span>
-</a>
-<p class="senior-note">
-              👉 Ook voor familieleden die ondersteuning zoeken voor hun ouders.
-            </p>
-</div>
+
 </div>
 </div>
 </section>
@@ -2229,27 +2443,23 @@
 <span>Start WhatsApp chat</span>
 </a>
 </div>
-<div class="contact-info">
-<div><strong>Telefoon:</strong> <a href="tel:+32480693350">0480 69 33 50</a></div>
-<div><strong>E-mail:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-<div><strong>Adres:</strong> Gallifortlei 142, 2100 Antwerpen</div>
-</div>
+
 </div>
 <form action="https://api.web3forms.com/submit" method="POST">
 <input name="access_key" type="hidden" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67"/>
 <input name="subject" type="hidden" value="Nieuw bericht via TIK website"/>
 <div class="form-group">
 <label>Naam</label>
-<input name="name" placeholder="Jouw naam" required="" type="text">
-</input></div>
+<input name="name" placeholder="Jouw naam" required="" type="text"/>
+</div>
 <div class="form-group">
 <label>Telefoonnummer</label>
-<input name="phone" placeholder="+32 ..." required="" type="tel">
-</input></div>
+<input name="phone" placeholder="+32 ..." required="" type="tel"/>
+</div>
 <div class="form-group">
 <label>E-mail (optioneel)</label>
-<input name="email" placeholder="info@tik.support" type="email">
-</input></div>
+<input name="email" placeholder="info@tik.support" type="email"/>
+</div>
 <div class="form-group">
 <label>Bericht</label>
 <textarea name="message" placeholder="Vertel kort jouw situatie of vraag"></textarea>
@@ -2258,7 +2468,7 @@
 <span>👉</span>
 <span>Vraag gratis gesprek aan</span>
 </button>
-</form>
+</form><div class="contact-info contact-bottom-info"><div><strong>📞 Telefoon:</strong><a href="tel:+32480693350">0480 69 33 50</a></div><div><strong>✉️ E-mail:</strong><a href="mailto:info@tik.support">info@tik.support</a></div><div><strong>📍 Adres:</strong>Gallifortlei 142, 2100 Antwerpen</div></div>
 </div>
 </section>
 </div>
@@ -2276,16 +2486,10 @@
 <p class="hero-subtitle">We help you with housing, administration and official appointments in Belgium.</p>
 <p class="hero-line">From finding a home to dealing with authorities – you don't have to do it alone.</p>
 <p class="hero-strong">Your peace of mind is not a luxury, but a right.</p>
-<div class="hero-cta">
-<a class="btn-primary" href="#contact-en">
+<div class="hero-cta"><div class="hero-cta-stack"><a class="btn-primary" href="#contact-en">
 <span>👉</span>
 <span>Start your free consultation</span>
-</a>
-<div class="hero-contact-mini">
-              Call us directly: <strong>+32 480 69 33 50</strong><br/>
-              Or email: <strong>info@tik.support</strong>
-</div>
-</div>
+</a><a class="btn-primary btn-whatsapp" href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." target="_blank"><span>💬</span><span>Chat instantly on WhatsApp</span></a></div><div class="hero-contact-mini"><div class="hero-contact-item"><span class="hero-contact-icon">📞</span><div><a href="tel:+32480693350">0480 69 33 50</a></div></div><div class="hero-contact-item"><span class="hero-contact-icon">✉️</span><div><a href="mailto:info@tik.support">info@tik.support</a></div></div></div></div>
 </div>
 <aside class="hero-card">
 <div class="hero-card-title">TIK – your guide in Belgium</div>
@@ -2304,13 +2508,10 @@
 <section class="location-showcase">
 <div class="container">
 <div class="location-grid">
-<div class="location-text">
-<h2>Your guide in <span class="highlight">Antwerp</span> &amp; all of Belgium</h2>
-<p>From the Scheldt river to the smallest municipality – we know the way and guide you personally through every step.</p>
-</div>
+<div class="location-text"><h2>How we help you</h2><p>Four clear areas in which we guide you, so you can move forward faster and avoid costly mistakes.</p><div class="quick-help-grid"><a class="quick-help-card" href="#woning-en"><div class="quick-help-top"><span class="quick-help-icon">🏠</span><h3>Housing</h3></div><p>Help with searching, appointments and rental contracts</p></a><a class="quick-help-card" href="#admin-en"><div class="quick-help-top"><span class="quick-help-icon">📄</span><h3>Administration</h3></div><p>Letters, paperwork and official appointments handled clearly</p></a><a class="quick-help-card" href="#senioren-en"><div class="quick-help-top"><span class="quick-help-icon">👥</span><h3>Seniors</h3></div><p>Calm and personal support with patience and respect</p></a><a class="quick-help-card" href="#nieuw-en"><div class="quick-help-top"><span class="quick-help-icon">🆕</span><h3>Newcomers</h3></div><p>Practical guidance to start well in Belgium</p></a></div></div>
 <div class="location-image-box">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Antwerpen skyline" loading="eager" decoding="sync" />
-          </div>
+<img alt="Antwerpen skyline" decoding="sync" loading="eager" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4="/>
+</div>
 </div>
 </div>
 </section>
@@ -2427,7 +2628,7 @@
               Patient guidance for seniors with all administration and appointments.
             </p>
 </div>
-</div>
+<div class="service-card"><div class="service-icon">🆕</div><div class="service-title">Newcomers in Belgium</div><div class="service-sub">A strong start without confusion</div><p class="service-text">We help newcomers with first steps, practical arrangements and clear guidance.</p></div></div>
 <div class="section-cta-center">
 <a class="btn-primary" href="#contact-en">
 <span>👉</span>
@@ -2520,9 +2721,7 @@
 <div class="section-header">
 <div class="section-kicker">Senior care &amp; support</div>
 <h2 class="section-title">Care and support for seniors in Belgium</h2>
-<p class="section-subtitle">
-            Gallifortlei 142, 2100 Antwerp
-          </p>
+
 </div>
 <div class="senior-grid">
 <div class="senior-block">
@@ -2544,31 +2743,7 @@
               No stress, no confusion – just help you can rely on.
             </p>
 </div>
-<div class="senior-block offer-block">
-<h3 class="senior-offer-title">Special offer for seniors</h3>
-<p class="senior-text">
-              A simple and affordable solution for ongoing support.
-            </p>
-<div class="senior-price">
-              👉 From <strong>€100 per year</strong>
-</div>
-<ul class="detail-list">
-<li><span>✔</span><div>Help with letters and administration</div></li>
-<li><span>✔</span><div>Support with questions and communication</div></li>
-<li><span>✔</span><div>Quick response when problems arise</div></li>
-<li><span>✔</span><div>Personal contact when needed</div></li>
-</ul>
-<p class="detail-strong">
-              This helps you avoid mistakes, save time and always have someone to assist you.
-            </p>
-<a class="btn-primary senior-btn" href="#contact-en">
-<span>👉</span>
-<span>Start support today</span>
-</a>
-<p class="senior-note">
-              👉 Also for family members looking for support for their parents.
-            </p>
-</div>
+
 </div>
 </div>
 </section>
@@ -2600,27 +2775,23 @@
 <span>Start WhatsApp chat</span>
 </a>
 </div>
-<div class="contact-info">
-<div><strong>Phone:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
-<div><strong>Email:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-<div><strong>Address:</strong> Gallifortlei 142, 2100 Antwerp</div>
-</div>
+
 </div>
 <form action="https://api.web3forms.com/submit" method="POST">
 <input name="access_key" type="hidden" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67"/>
 <input name="subject" type="hidden" value="New message via TIK website"/>
 <div class="form-group">
 <label>Name</label>
-<input name="name" placeholder="Your name" required="" type="text">
-</input></div>
+<input name="name" placeholder="Your name" required="" type="text"/>
+</div>
 <div class="form-group">
 <label>Phone number</label>
-<input name="phone" placeholder="+32 ..." required="" type="tel">
-</input></div>
+<input name="phone" placeholder="+32 ..." required="" type="tel"/>
+</div>
 <div class="form-group">
 <label>Email (optional)</label>
-<input name="email" placeholder="your@email.com" type="email">
-</input></div>
+<input name="email" placeholder="your@email.com" type="email"/>
+</div>
 <div class="form-group">
 <label>Message</label>
 <textarea name="message" placeholder="Tell us your situation or question"></textarea>
@@ -2629,7 +2800,7 @@
 <span>👉</span>
 <span>Request free consultation</span>
 </button>
-</form>
+</form><div class="contact-info contact-bottom-info"><div><strong>📞 Phone:</strong><a href="tel:+32480693350">+32 480 69 33 50</a></div><div><strong>✉️ E-mail:</strong><a href="mailto:info@tik.support">info@tik.support</a></div><div><strong>📍 Address:</strong>Gallifortlei 142, 2100 Antwerp</div></div>
 </div>
 </section>
 </div>
@@ -2647,16 +2818,10 @@
 <p class="hero-subtitle">Nous vous aidons pour le logement, l'administration et les rendez‑vous officiels en Belgique.</p>
 <p class="hero-line">De la recherche de logement aux démarches administratives – vous n'êtes pas seul.</p>
 <p class="hero-strong">Votre tranquillité n'est pas un luxe, mais un droit.</p>
-<div class="hero-cta">
-<a class="btn-primary" href="#contact-fr">
+<div class="hero-cta"><div class="hero-cta-stack"><a class="btn-primary" href="#contact-fr">
 <span>👉</span>
 <span>Commencez votre consultation gratuite</span>
-</a>
-<div class="hero-contact-mini">
-              Appelez‑nous: <strong>+32 480 69 33 50</strong><br/>
-              Ou écrivez‑nous: <strong>info@tik.support</strong>
-</div>
-</div>
+</a><a class="btn-primary btn-whatsapp" href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." target="_blank"><span>💬</span><span>Discuter sur WhatsApp</span></a></div><div class="hero-contact-mini"><div class="hero-contact-item"><span class="hero-contact-icon">📞</span><div><a href="tel:+32480693350">0480 69 33 50</a></div></div><div class="hero-contact-item"><span class="hero-contact-icon">✉️</span><div><a href="mailto:info@tik.support">info@tik.support</a></div></div></div></div>
 </div>
 <aside class="hero-card">
 <div class="hero-card-title">TIK – votre guide en Belgique</div>
@@ -2675,13 +2840,10 @@
 <section class="location-showcase">
 <div class="container">
 <div class="location-grid">
-<div class="location-text">
-<h2>Votre guide à <span class="highlight">Anvers</span> &amp; en Belgique</h2>
-<p>De l'Escaut à la plus petite commune – nous connaissons le chemin et vous guidons personnellement.</p>
-</div>
+<div class="location-text"><h2>Comment nous vous aidons</h2><p>Quatre domaines clairs dans lesquels nous vous accompagnons pour avancer plus vite et éviter les erreurs.</p><div class="quick-help-grid"><a class="quick-help-card" href="#woning-fr"><div class="quick-help-top"><span class="quick-help-icon">🏠</span><h3>Logement</h3></div><p>Aide pour la recherche, les rendez-vous et les contrats de location</p></a><a class="quick-help-card" href="#admin-fr"><div class="quick-help-top"><span class="quick-help-icon">📄</span><h3>Administration</h3></div><p>Courriers, documents et rendez-vous officiels gérés clairement</p></a><a class="quick-help-card" href="#senioren-fr"><div class="quick-help-top"><span class="quick-help-icon">👥</span><h3>Seniors</h3></div><p>Accompagnement calme et personnel avec patience et respect</p></a><a class="quick-help-card" href="#nieuw-fr"><div class="quick-help-top"><span class="quick-help-icon">🆕</span><h3>Nouveaux arrivants</h3></div><p>Aide pratique pour bien démarrer en Belgique</p></a></div></div>
 <div class="location-image-box">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Antwerpen skyline" loading="eager" decoding="sync" />
-          </div>
+<img alt="Antwerpen skyline" decoding="sync" loading="eager" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4="/>
+</div>
 </div>
 </div>
 </section>
@@ -2798,7 +2960,7 @@
               Accompagnement patient pour les seniors avec toute l'administration et les rendez-vous.
             </p>
 </div>
-</div>
+<div class="service-card"><div class="service-icon">🆕</div><div class="service-title">Nouveaux arrivants en Belgique</div><div class="service-sub">Un bon départ sans confusion</div><p class="service-text">Nous aidons les nouveaux arrivants dans leurs premières démarches avec un accompagnement clair.</p></div></div>
 <div class="section-cta-center">
 <a class="btn-primary" href="#contact-fr">
 <span>👉</span>
@@ -2891,9 +3053,7 @@
 <div class="section-header">
 <div class="section-kicker">Soutien aux seniors</div>
 <h2 class="section-title">Soutien et accompagnement pour seniors en Belgique</h2>
-<p class="section-subtitle">
-            Gallifortlei 142, 2100 Anvers
-          </p>
+
 </div>
 <div class="senior-grid">
 <div class="senior-block">
@@ -2915,31 +3075,7 @@
               Pas de stress, pas de confusion – seulement un soutien fiable.
             </p>
 </div>
-<div class="senior-block offer-block">
-<h3 class="senior-offer-title">Offre spéciale pour seniors</h3>
-<p class="senior-text">
-              Une solution simple et abordable pour un accompagnement continu.
-            </p>
-<div class="senior-price">
-              👉 À partir de <strong>100 € par an</strong>
-</div>
-<ul class="detail-list">
-<li><span>✔</span><div>Aide pour les lettres et l'administration</div></li>
-<li><span>✔</span><div>Soutien pour les questions et la communication</div></li>
-<li><span>✔</span><div>Réponse rapide en cas de problème</div></li>
-<li><span>✔</span><div>Contact personnel si nécessaire</div></li>
-</ul>
-<p class="detail-strong">
-              Vous évitez ainsi les erreurs, gagnez du temps et avez toujours quelqu'un pour vous aider.
-            </p>
-<a class="btn-primary senior-btn" href="#contact-fr">
-<span>👉</span>
-<span>Commencez l'accompagnement dès aujourd'hui</span>
-</a>
-<p class="senior-note">
-              👉 Aussi pour les proches qui cherchent du soutien pour leurs parents.
-            </p>
-</div>
+
 </div>
 </div>
 </section>
@@ -2971,27 +3107,23 @@
 <span>Démarrer le chat WhatsApp</span>
 </a>
 </div>
-<div class="contact-info">
-<div><strong>Téléphone:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
-<div><strong>Email:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-<div><strong>Adresse:</strong> Gallifortlei 142, 2100 Anvers</div>
-</div>
+
 </div>
 <form action="https://api.web3forms.com/submit" method="POST">
 <input name="access_key" type="hidden" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67"/>
 <input name="subject" type="hidden" value="Nouveau message via site TIK"/>
 <div class="form-group">
 <label>Nom</label>
-<input name="name" placeholder="Votre nom" required="" type="text">
-</input></div>
+<input name="name" placeholder="Votre nom" required="" type="text"/>
+</div>
 <div class="form-group">
 <label>Téléphone</label>
-<input name="phone" placeholder="+32 ..." required="" type="tel">
-</input></div>
+<input name="phone" placeholder="+32 ..." required="" type="tel"/>
+</div>
 <div class="form-group">
 <label>Email (optionnel)</label>
-<input name="email" placeholder="votre@email.com" type="email">
-</input></div>
+<input name="email" placeholder="votre@email.com" type="email"/>
+</div>
 <div class="form-group">
 <label>Message</label>
 <textarea name="message" placeholder="Décrivez brièvement votre situation ou question"></textarea>
@@ -3000,7 +3132,7 @@
 <span>👉</span>
 <span>Demander consultation gratuite</span>
 </button>
-</form>
+</form><div class="contact-info contact-bottom-info"><div><strong>📞 Téléphone:</strong><a href="tel:+32480693350">+32 480 69 33 50</a></div><div><strong>✉️ E-mail:</strong><a href="mailto:info@tik.support">info@tik.support</a></div><div><strong>📍 Adresse:</strong>Gallifortlei 142, 2100 Anvers</div></div>
 </div>
 </section>
 </div>
@@ -3018,16 +3150,10 @@
 <p class="hero-subtitle">نساعدك في السكن، والإدارة، والمواعيد الرسمية في بلجيكا.</p>
 <p class="hero-line">من البحث عن منزل إلى التعامل مع الجهات الرسمية – لست مضطرًا أن تفعل ذلك وحدك.</p>
 <p class="hero-strong">راحتك ليست رفاهية، بل حق.</p>
-<div class="hero-cta">
-<a class="btn-primary" href="#contact-ar">
+<div class="hero-cta"><div class="hero-cta-stack"><a class="btn-primary" href="#contact-ar">
 <span>👉</span>
 <span>ابدأ استشارتك المجانية</span>
-</a>
-<div class="hero-contact-mini">
-              اتصل بنا مباشرة: <strong>+32 480 69 33 50</strong><br/>
-              أو عبر البريد: <strong>info@tik.support</strong>
-</div>
-</div>
+</a><a class="btn-primary btn-whatsapp" href="https://wa.me/32480693350?text=Hallo%20TIK-Assist!%20Ik%20heb%20een%20vraag." target="_blank"><span>💬</span><span>ابدأ واتساب الآن</span></a></div><div class="hero-contact-mini"><div class="hero-contact-item"><span class="hero-contact-icon">📞</span><div><a href="tel:+32480693350">0480 69 33 50</a></div></div><div class="hero-contact-item"><span class="hero-contact-icon">✉️</span><div><a href="mailto:info@tik.support">info@tik.support</a></div></div></div></div>
 </div>
 <aside class="hero-card">
 <div class="hero-card-title">TIK – دليلك في بلجيكا</div>
@@ -3046,13 +3172,10 @@
 <section class="location-showcase">
 <div class="container">
 <div class="location-grid">
-<div class="location-text">
-<h2>دليلك في <span class="highlight">أنتويربن</span> وكل بلجيكا</h2>
-<p>من نهر شيلد إلى أصغر بلدية – نعرف الطريق ونرافقك شخصياً.</p>
-</div>
+<div class="location-text"><h2>كيف نساعدك</h2><p>أربعة مجالات واضحة نرافقك فيها حتى تتقدم أسرع وتتجنب الأخطاء والتعقيد.</p><div class="quick-help-grid"><a class="quick-help-card" href="#woning-ar"><div class="quick-help-top"><span class="quick-help-icon">🏠</span><h3>السكن</h3></div><p>مساعدة في البحث والمواعيد وعقود الإيجار</p></a><a class="quick-help-card" href="#admin-ar"><div class="quick-help-top"><span class="quick-help-icon">📄</span><h3>الإدارة</h3></div><p>الرسائل والأوراق والمواعيد الرسمية بشكل واضح</p></a><a class="quick-help-card" href="#senioren-ar"><div class="quick-help-top"><span class="quick-help-icon">👥</span><h3>كبار السن</h3></div><p>دعم هادئ وشخصي باحترام وصبر</p></a><a class="quick-help-card" href="#nieuw-ar"><div class="quick-help-top"><span class="quick-help-icon">🆕</span><h3>القادمون الجدد</h3></div><p>مساعدة عملية للانطلاق بشكل جيد في بلجيكا</p></a></div></div>
 <div class="location-image-box">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Antwerpen skyline" loading="eager" decoding="sync" />
-          </div>
+<img alt="Antwerpen skyline" decoding="sync" loading="eager" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbnR3ZXJwIHNreWxpbmUgaWxsdXN0cmF0aW9uIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNzExMWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMxMDI0M2IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNmMThkNTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZkN2ExIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1Mzc1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA5MTMxZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ2xvdyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZkOThhIiBzdG9wLW9wYWNpdHk9Ii45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOGI0ZCIgc3RvcC1vcGFjaXR5PSIuMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNvZnRHbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTgiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjExNzAiIGN5PSIxODAiIHI9Ijc4IiBmaWxsPSIjZmZlOGIyIi8+CiAgPGNpcmNsZSBjeD0iMTE3MCIgY3k9IjE4MCIgcj0iMTEwIiBmaWxsPSJ1cmwoI2dsb3cpIiBmaWx0ZXI9InVybCgjc29mdEdsb3cpIi8+CiAgPHJlY3QgeT0iNTkwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzMTAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgb3BhY2l0eT0iLjE4Ij4KICAgIDxwYXRoIGQ9Ik0wIDcxMCBDMTIwIDY4MCwgMjEwIDc0NSwgMzQwIDcxOCBTNTYwIDY4MCwgNzIwIDcxNSAxMDEwIDc0OCwgMTE2MCA3MTYgMTQxMCA2ODUsIDE2MDAgNzIyIEwxNjAwIDkwMCBMMCA5MDAgWiIgZmlsbD0iIzlmZDBmZiIvPgogICAgPHBhdGggZD0iTTAgNzYwIEMxNTAgNzMwLCAyODAgNzkyLCA0MTAgNzYwIFM2NzAgNzIwLCA4NDAgNzYwIDExMDAgNzk1LCAxMjcwIDc2MCAxNDgwIDczMiwgMTYwMCA3NzQgTDE2MDAgOTAwIEwwIDkwMCBaIiBmaWxsPSIjZmZmZmZmIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMxMTE4MjIiPgogICAgPHJlY3QgeD0iODAiIHk9IjQ1NSIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjEzNSIvPgogICAgPHJlY3QgeD0iMTYyIiB5PSI0MzAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxNjAiLz4KICAgIDxyZWN0IHg9IjIzOCIgeT0iNDAwIiB3aWR0aD0iODUiIGhlaWdodD0iMTkwIi8+CiAgICA8cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIi8+CiAgICA8cmVjdCB4PSI1NjAiIHk9IjQyOCIgd2lkdGg9Ijk0IiBoZWlnaHQ9IjE2MiIvPgogICAgPHJlY3QgeD0iNjY2IiB5PSIzNzUiIHdpZHRoPSIxMjIiIGhlaWdodD0iMjE1Ii8+CiAgICA8cmVjdCB4PSI4MDgiIHk9IjQ0MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjE1MCIvPgogICAgPHJlY3QgeD0iODg2IiB5PSI0MDUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxODUiLz4KICAgIDxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiLz4KICAgIDxyZWN0IHg9IjExODIiIHk9IjQyNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjE2NCIvPgogICAgPHJlY3QgeD0iMTI1OCIgeT0iNDQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMTQ0Ii8+CiAgICA8cmVjdCB4PSIxMzE4IiB5PSI0MTQiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNzYiLz4KICAgIDxyZWN0IHg9IjE0MTgiIHk9IjQzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE1OCIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMTMxZDI5Ij4KICAgIDxwYXRoIGQ9Ik02OTUgNTkwIEw2OTUgMzYyIEw3MjUgMzYyIEw3MjUgMjY1IEw3NDcgMjY1IEw3NDcgMjI1IEw3NjggMjY1IEw3ODkgMjY1IEw3ODkgMzQwIEw4MTcgMzQwIEw4MTcgNTkwIFoiLz4KICAgIDxwYXRoIGQ9Ik03NDIgMjE0IEw3NjggMTcyIEw3OTMgMjE0IFoiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik01MDAgNTkwIEw1MDAgMzU4IEw1MzAgMzU4IEw1MzAgMzE4IEw1NTggMzE4IEw1NTggMjgwIEw1ODggMzE4IEw2MTYgMzE4IEw2MTYgMzU4IEw2NDQgMzU4IEw2NDQgNTkwIFoiLz4KICAgIDxyZWN0IHg9IjUwOCIgeT0iMjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iNzAiIGZpbGw9IiMxODI1MzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTM1IDU5MCBMMTEzNSAzNDAgTDExODUgMzQwIEwxMTg1IDI5NSBMMTIxNSAyOTUgTDEyMTUgMjU4IEwxMjQ1IDI5NSBMMTI3NSAyOTUgTDEyNzUgMzQwIEwxMzI1IDM0MCBMMTMyNSA1OTAgWiIvPgogICAgPHBhdGggZD0iTTI5MCA1OTAgTDI5MCAzMzAgTDMyMCAzMzAgTDMyMCAyNzAgTDM1MCAyNzAgTDM1MCAyMzggTDM4MCAyNzAgTDQxMCAyNzAgTDQxMCAzMzAgTDQ0MCAzMzAgTDQ0MCA1OTAgWiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZjdjNTdjIiBvcGFjaXR5PSIuNzUiPgogICAgPHJlY3QgeD0iMTAyIiB5PSI0NzgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjEyMCIgeT0iNDc4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSIxODQiIHk9IjQ1MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIyNTYiIHk9IjQyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMjc0IiB5PSI0MjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjI5MiIgeT0iNDIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjQ0NiIgeT0iNDEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiLz48cmVjdCB4PSI0NjgiIHk9IjQxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIi8+PHJlY3QgeD0iNDkwIiB5PSI0MTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iNTgwIiB5PSI0NTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjYwMCIgeT0iNDUwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjgyOSIgeT0iNDY0IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz48cmVjdCB4PSI5MDYiIHk9IjQzMiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICA8cmVjdCB4PSIxMDkwIiB5PSI0MTgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPjxyZWN0IHg9IjExMTAiIHk9IjQxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTEzMCIgeT0iNDE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDxyZWN0IHg9IjEzMzgiIHk9IjQzOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+PHJlY3QgeD0iMTM1OCIgeT0iNDM4IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjIyIj4KICAgIDxwYXRoIGQ9Ik0wIDYzOCBMMTYwMCA2MzgiIHN0cm9rZT0iI2ZmZDU5NyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8cGF0aCBkPSJNMCA2NTIgTDE2MDAgNjUyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KICA8ZyBvcGFjaXR5PSIuMjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTcwKSBzY2FsZSgxLC0wLjQyKSI+CiAgICA8cGF0aCBkPSJNNjk1IDU5MCBMNjk1IDM2MiBMNzI1IDM2MiBMNzI1IDI2NSBMNzQ3IDI2NSBMNzQ3IDIyNSBMNzY4IDI2NSBMNzg5IDI2NSBMNzg5IDM0MCBMODE3IDM0MCBMODE3IDU5MCBaIiBmaWxsPSIjZjViMDZhIi8+CiAgICA8cGF0aCBkPSJNNTAwIDU5MCBMNTAwIDM1OCBMNTMwIDM1OCBMNTMwIDMxOCBMNTU4IDMxOCBMNTU4IDI4MCBMNTg4IDMxOCBMNjE2IDMxOCBMNjE2IDM1OCBMNjQ0IDM1OCBMNjQ0IDU5MCBaIiBmaWxsPSIjZjBhOTZhIi8+CiAgICA8cGF0aCBkPSJNMTEzNSA1OTAgTDExMzUgMzQwIEwxMTg1IDM0MCBMMTE4NSAyOTUgTDEyMTUgMjk1IEwxMjE1IDI1OCBMMTI0NSAyOTUgTDEyNzUgMjk1IEwxMjc1IDM0MCBMMTMyNSAzNDAgTDEzMjUgNTkwIFoiIGZpbGw9IiNmMGE5NmEiLz4KICAgIDxyZWN0IHg9IjgwIiB5PSI0NTUiIHdpZHRoPSI3OCIgaGVpZ2h0PSIxMzUiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxNjIiIHk9IjQzMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMjM4IiB5PSI0MDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIzMzQiIHk9IjQ1MiIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iNDE2IiB5PSIzODciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAzIiBmaWxsPSIjZjdjNTdjIi8+PHJlY3QgeD0iNTYwIiB5PSI0MjgiIHdpZHRoPSI5NCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjY2NiIgeT0iMzc1IiB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIxNSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjgwOCIgeT0iNDQwIiB3aWR0aD0iNjQiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSI4ODYiIHk9IjQwNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjE4NSIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9Ijk3NCIgeT0iNDM4IiB3aWR0aD0iODQiIGhlaWdodD0iMTUyIiBmaWxsPSIjZjdjNTdjIi8+CiAgICA8cmVjdCB4PSIxMDY2IiB5PSIzOTIiIHdpZHRoPSI5NiIgaGVpZ2h0PSIxOTgiIGZpbGw9IiNmN2M1N2MiLz48cmVjdCB4PSIxMTgyIiB5PSI0MjYiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxNjQiIGZpbGw9IiNmN2M1N2MiLz4KICAgIDxyZWN0IHg9IjEyNTgiIHk9IjQ0NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI2Y3YzU3YyIvPjxyZWN0IHg9IjEzMTgiIHk9IjQxNCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjE3NiIgZmlsbD0iI2Y3YzU3YyIvPgogICAgPHJlY3QgeD0iMTQxOCIgeT0iNDMyIiB3aWR0aD0iNzIiIGhlaWdodD0iMTU4IiBmaWxsPSIjZjdjNTdjIi8+CiAgPC9nPgo8L3N2Zz4="/>
+</div>
 </div>
 </div>
 </section>
@@ -3169,7 +3292,7 @@
               مرافقة صبورة لكبار السن في جميع الإجراءات الإدارية والمواعيد.
             </p>
 </div>
-</div>
+<div class="service-card"><div class="service-icon">🆕</div><div class="service-title">القادمون الجدد في بلجيكا</div><div class="service-sub">بداية قوية بدون تعقيد</div><p class="service-text">نساعد القادمين الجدد في الخطوات الأولى والتنظيم العملي والتوجيه الواضح.</p></div></div>
 <div class="section-cta-center">
 <a class="btn-primary" href="#contact-ar">
 <span>👉</span>
@@ -3261,10 +3384,8 @@
 <div class="container">
 <div class="section-header">
 <div class="section-kicker">دعم كبار السن</div>
-<h2 class="section-title">رعاية ودعم لكبار السن في بلجيكا</h2>
-<p class="section-subtitle">
-            Gallifortlei 142, 2100 أنتويربن
-          </p>
+<h2 class="section-title">الرعاية والدعم لكبار السن في بلجيكا</h2>
+
 </div>
 <div class="senior-grid">
 <div class="senior-block">
@@ -3286,31 +3407,7 @@
               بدون توتر، بدون ارتباك – فقط مساعدة يمكنك الوثوق بها.
             </p>
 </div>
-<div class="senior-block offer-block">
-<h3 class="senior-offer-title">عرض خاص لكبار السن</h3>
-<p class="senior-text">
-              حل بسيط وبسعر مناسب لدعم مستمر.
-            </p>
-<div class="senior-price">
-              👉 ابتداءً من <strong>100€ في السنة</strong>
-</div>
-<ul class="detail-list">
-<li><span>✔</span><div>مساعدة في الرسائل والإدارة</div></li>
-<li><span>✔</span><div>دعم في الأسئلة والتواصل</div></li>
-<li><span>✔</span><div>استجابة سريعة عند حدوث مشاكل</div></li>
-<li><span>✔</span><div>تواصل شخصي عند الحاجة</div></li>
-</ul>
-<p class="detail-strong">
-              هكذا تتجنب الأخطاء، وتوفّر الوقت، ويكون لديك دائمًا من يساعدك.
-            </p>
-<a class="btn-primary senior-btn" href="#contact-ar">
-<span>👉</span>
-<span>ابدأ الدعم اليوم</span>
-</a>
-<p class="senior-note">
-              👉 أيضًا لأفراد العائلة الذين يبحثون عن دعم لوالديهم.
-            </p>
-</div>
+
 </div>
 </div>
 </section>
@@ -3341,27 +3438,23 @@
 <span>ابدأ محادثة واتساب</span>
 </a>
 </div>
-<div class="contact-info">
-<div><strong>الهاتف:</strong> <a href="tel:+32480693350">+32 480 69 33 50</a></div>
-<div><strong>البريد:</strong> <a href="mailto:info@tik.support">info@tik.support</a></div>
-<div><strong>العنوان:</strong> Gallifortlei 142, 2100 أنتويربن</div>
-</div>
+
 </div>
 <form action="https://api.web3forms.com/submit" method="POST">
 <input name="access_key" type="hidden" value="45f697ee-dacc-40f5-9ba3-ef33f1fffd67"/>
 <input name="subject" type="hidden" value="رسالة جديدة عبر موقع TIK"/>
 <div class="form-group">
 <label>الاسم</label>
-<input name="name" placeholder="اسمك" required="" type="text">
-</input></div>
+<input name="name" placeholder="اسمك" required="" type="text"/>
+</div>
 <div class="form-group">
 <label>رقم الهاتف</label>
-<input name="phone" placeholder="+32 ..." required="" type="tel">
-</input></div>
+<input name="phone" placeholder="+32 ..." required="" type="tel"/>
+</div>
 <div class="form-group">
 <label>البريد (اختياري)</label>
-<input name="email" placeholder="your@email.com" type="email">
-</input></div>
+<input name="email" placeholder="your@email.com" type="email"/>
+</div>
 <div class="form-group">
 <label>الرسالة</label>
 <textarea name="message" placeholder="اخبرنا عن وضعك أو سؤالك"></textarea>
@@ -3370,7 +3463,7 @@
 <span>👉</span>
 <span>اطلب استشارة مجانية</span>
 </button>
-</form>
+</form><div class="contact-info contact-bottom-info"><div><strong>📞 الهاتف:</strong><a href="tel:+32480693350">+32 480 69 33 50</a></div><div><strong>✉️ البريد الإلكتروني:</strong><a href="mailto:info@tik.support">info@tik.support</a></div><div><strong>📍 العنوان:</strong>Gallifortlei 142, 2100 أنتويربن</div></div>
 </div>
 </section>
 </div>
@@ -3382,7 +3475,6 @@
 <div>Meertalige begeleiding voor wonen, administratie, afspraken en ondersteuning voor senioren.</div>
 </div>
 </footer>
-
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -3461,6 +3553,7 @@
     typeLogoText(lang);
     updateWelcomeBadge(lang);
     updateNavActive();
+    closeMobileNav();
   }
 
   function ensureWelcomeBadges() {
@@ -3480,6 +3573,56 @@
     });
   }
 
+
+
+  function closeMobileNav() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('navToggle');
+    if (nav) nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMobileNav() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('navToggle');
+    if (nav) nav.classList.add('open');
+    document.body.classList.add('nav-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  function bindMobileNav() {
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('mainNav');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.contains('open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) closeMobileNav();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (window.innerWidth > 900) return;
+      if (!nav.classList.contains('open')) return;
+      if (nav.contains(event.target) || toggle.contains(event.target)) return;
+      closeMobileNav();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) closeMobileNav();
+    });
+  }
+
   function scrollToElement(target) {
     if (!target) return;
     const header = document.querySelector('header');
@@ -3492,6 +3635,7 @@
     const lang = getActiveLang();
     const target = document.getElementById(`${sectionName}-${lang}`) || document.getElementById(sectionName);
     scrollToElement(target);
+    if (window.innerWidth <= 900) closeMobileNav();
   }
 
   function bindNavLinks() {
@@ -3504,7 +3648,7 @@
   }
 
   function makeServiceCardsClickable() {
-    const map = ['woning', 'admin', 'senioren'];
+    const map = ['woning', 'admin', 'senioren', 'nieuw'];
     document.querySelectorAll('.lang-block').forEach(block => {
       block.querySelectorAll('.services-grid .service-card').forEach((card, index) => {
         const section = map[index];
@@ -3787,6 +3931,5 @@
     if (!state.introHasPlayed) playIntroAnimation(true);
   });
 </script>
-
 </body>
 </html>
